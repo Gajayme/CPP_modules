@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 18:49:03 by lyubov            #+#    #+#             */
-/*   Updated: 2022/05/26 19:58:36 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/05/27 16:42:41 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <string>
+# include <iomanip>
 # include "contact.hpp"
 
 class	PhoneBook{
@@ -30,6 +31,7 @@ class	PhoneBook{
 
 	void add();
 	void search();
+	void search_print();
 
 	private:
 	Contact	contacts[8];

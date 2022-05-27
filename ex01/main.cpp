@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 00:00:09 by lyubov            #+#    #+#             */
-/*   Updated: 2022/05/26 23:52:00 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/05/27 15:58:31 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int main(void)
 
 	while (1)
 	{
+		std::cout<<"Enter command: ";
 		std::cin>>user_input;
 		if (user_input == "ADD")
 			phonebook.add();

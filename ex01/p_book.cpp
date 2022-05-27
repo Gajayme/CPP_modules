@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 18:37:33 by lyubov            #+#    #+#             */
-/*   Updated: 2022/05/26 23:47:25 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/05/27 16:49:19 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,26 @@ void PhoneBook::add()
 
 void PhoneBook::search()
 {
+	std::cout<<std::right<<std::setw(10)<<"Index"<<"|"
+	<<std::right<<std::setw(10)<<"First name"<<"|"
+	<<std::right<<std::setw(10)<<"Last Name"<<"|"
+	<<std::right<<std::setw(10)<<"Nickname"<<"|"<<std::endl;
+
 	for (int i = 0; i != contacts_amount; ++i){
-		std::cout<<i + 1<<" ";
-		std::cout<<contacts[i].first_name<<" ";
-		std::cout<<contacts[i].last_name<<" ";
-		std::cout<<contacts[i].nickname<<" ";
-		std::cout<<contacts[i].phone_number<<" ";
-		std::cout<<contacts[i].darckest_secret<<" ";
+
+		std::cout<<std::right<<std::setw(10)<<i + 1<<"|";
+		if (contacts[i].first_name.length() > 10)
+			std::cout<<"pass";
+		else
+			std::cout<<std::right<<std::setw(10)<<contacts[i].first_name<<"|";
+		if (contacts[i].last_name.length() > 10)
+			std::cout<<"pass";
+		else
+			std::cout<<std::right<<std::setw(10)<<contacts[i].last_name<<"|";
+		if (contacts[i].nickname.length() > 10)
+			std::cout<<"pass";
+		else
+			std::cout<<std::right<<std::setw(10)<<contacts[i].nickname<<"|";
 		std::cout<<std::endl;
 	}
 }
