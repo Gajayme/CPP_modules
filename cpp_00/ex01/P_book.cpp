@@ -1,17 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   p_book.cpp                                         :+:      :+:    :+:   */
+/*   P_book.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 18:37:33 by lyubov            #+#    #+#             */
-/*   Updated: 2022/05/28 19:05:44 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/05/30 00:34:25 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "P_book.hpp"
 
+PhoneBook::PhoneBook(void){
+		counter = 0;
+		contacts_amount = 0;
+}
+
+PhoneBook::~PhoneBook(){
+};
+
+//get info and creating contact
 void PhoneBook::add(){
 
 		std::string f_name;
@@ -20,7 +29,6 @@ void PhoneBook::add(){
 		std::string p_numb;
 		std::string d_secr;
 
-		//get data from user (returning if he pass EOF)
 		std::cout<<"Enter first name\n>";
 		if (add_param(f_name))
 			return ;
@@ -41,21 +49,29 @@ void PhoneBook::add(){
 		if (add_param(d_secr))
 			return ;
 
-		//creating contact and incr. counters
 		contacts[counter].add_data(f_name, l_name, n_name, p_numb, d_secr);
 		contacts_amount = (contacts_amount == 8) ? 8 : contacts_amount + 1;
 		counter = (counter == 7) ? 0 : counter + 1;
 }
 
+//validate info
+int PhoneBook::add_param(std::string &param){
+	std::getline(std::cin, param);
+	if (std::cin.eof())
+		std::exit(0);
+	else if (param.size() == 0)
+		return (1);
+	return (0);
+}
+
+//printing all contacts in short
 void PhoneBook::search(){
 
-	//printing header of phone book
 	std::cout<<std::right<<std::setw(10)<<"Index"<<"|"
 	<<std::right<<std::setw(10)<<"First name"<<"|"
 	<<std::right<<std::setw(10)<<"Last Name"<<"|"
 	<<std::right<<std::setw(10)<<"Nickname"<<"|"<<std::endl;
 
-	//printing content of phonebook in short
 	for (int i = 0; i != contacts_amount; ++i){
 
 		std::cout<<std::right<<std::setw(10)<<i + 1<<"|";
@@ -73,11 +89,9 @@ void PhoneBook::search(){
 			std::cout<<std::right<<std::setw(10)<<contacts[i].nickname<<"|";
 		std::cout<<std::endl;
 	}
-	//all concrete contact info
 	search_get_contact();
 }
 
-//print short info of all contacts
 void PhoneBook::search_print(std::string to_print){
 
 	for (int i = 0; i < 9; ++i){
@@ -86,7 +100,7 @@ void PhoneBook::search_print(std::string to_print){
 	std::cout<<".|";
 }
 
-//print all contact info
+//print all info of exact contact
 void PhoneBook::search_get_contact(){
 	std::string	idx_string;
 	int			idx_int;
@@ -100,12 +114,3 @@ void PhoneBook::search_get_contact(){
 		std::cout<<"Invalid input\n>";
 }
 
-//adding contact
-int PhoneBook::add_param(std::string &param){
-	std::getline(std::cin, param);
-	if (std::cin.eof())
-		std::exit(0);
-	else if (param.size() == 0)
-		return (1);
-	return (0);
-}

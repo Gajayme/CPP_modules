@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   p_book.hpp                                         :+:      :+:    :+:   */
+/*   P_book.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 18:49:03 by lyubov            #+#    #+#             */
-/*   Updated: 2022/05/28 19:01:43 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/05/30 00:26:23 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,8 @@
 class	PhoneBook{
 
 	public:
-
-	PhoneBook (){
-		counter = 0;
-		contacts_amount = 0;
-	}
-	~PhoneBook(){
-	}
+	PhoneBook ();
+	~PhoneBook();
 
 	void	add();
 	int		add_param(std::string &param);
