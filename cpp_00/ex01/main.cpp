@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gajayme <gajayme@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 00:00:09 by lyubov            #+#    #+#             */
-/*   Updated: 2022/05/28 19:07:21 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/05/31 12:26:53 by gajayme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int main(void)
 		else if (user_input == "EXIT" || user_input == "exit")
 			return (0);
 		else
-			std::cout<<"Enter avaliable command please\n>"<<std::endl;
+			std::cout<<"Enter avaliable command please\n"<<std::endl;
 	}
 	return(0);
 }

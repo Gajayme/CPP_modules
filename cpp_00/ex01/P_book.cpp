@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   P_book.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gajayme <gajayme@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 18:37:33 by lyubov            #+#    #+#             */
-/*   Updated: 2022/05/30 00:34:25 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/05/31 12:26:24 by gajayme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ PhoneBook::PhoneBook(void){
 }
 
 PhoneBook::~PhoneBook(){
-};
+}
 
 //get info and creating contact
 void PhoneBook::add(){
