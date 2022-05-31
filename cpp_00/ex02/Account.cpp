@@ -15,11 +15,7 @@ int	Account::_totalAmount;
 int	Account::_totalNbDeposits;
 int	Account::_totalNbWithdrawals;
 
-// static int	getNbAccounts( void );
-// 	static int	getTotalAmount( void );
-// 	static int	getNbDeposits( void );
-// 	static int	getNbWithdrawals( void );
-// 	static void	displayAccountsInfos( void );
+//1-8 strings in log file are constructors output
 
 int Account::getNbAccounts(){
 	return(_nbAccounts);
@@ -30,8 +26,22 @@ int Account::getTotalAmount(){
 }
 
 int Account::getNbDeposits(){
-	return(_nbDeposits);
+	return(_totalNbDeposits);
 }
+
+int Account::getNbWithdrawals(){
+	return(_totalNbWithdrawals);
+}
+
+void	Account::displayAccountsInfos(){
+	std::cout<<"TIMESTAMP"<<" "<<"accounts:"<<index<<";"<<"total:"<<_totalAmount<<";"<<"deposits:"
+	<<_totalNbDeposits<<";"<<"withdrawals:"<<_totalNbWithdrawals<<std::endl;
+};
+
+//crtr
+Account( int initial_deposit );
+//drctr
+~Account( void );
 
 // int main(void)
 // {
