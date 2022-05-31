@@ -14,6 +14,8 @@
 
 
 int		main( void ) {
+	
+	//freopen("my_log.txt", "w", stdout);
 
 	typedef std::vector<Account::t>							  accounts_t; //  создание вектора из объектов класса ак
 	typedef std::vector<int>								  ints_t;
@@ -30,7 +32,7 @@ int		main( void ) {
 	ints_t				deposits( d, d + d_size );
 	ints_t::iterator	dep_begin	= deposits.begin();
 	ints_t::iterator	dep_end		= deposits.end();
-
+	
 	int	const			w[]			= { 321, 34, 657, 4, 76, 275, 657, 7654 };
 	size_t const		w_size( sizeof(w) / sizeof(int) );
 	ints_t				withdrawals( w, w + w_size );
