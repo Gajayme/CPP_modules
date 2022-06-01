@@ -1,7 +1,7 @@
 NAME		= p_book
 
 CXX			= g++
-CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -O2
 RM			= rm -f
 
 SRC			= $(wildcard *.cpp)
