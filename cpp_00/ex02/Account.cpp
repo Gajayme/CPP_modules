@@ -72,7 +72,7 @@ void	Account::makeDeposit( int deposit ){
 //[19920104_091532] index:0;p_amount:47;withdrawal:refused
 //[19920104_091532] index:1;p_amount:819;withdrawal:34;amount:785;nb_withdrawals:1
 bool	Account::makeWithdrawal( int withdrawal ){
-	
+
 	if (withdrawal > _amount){
 		_displayTimestamp();
 		std::cout<<" index:"<<_accountIndex<<";p_amount:"<<_amount<<";withdrawal:refused"<<std::endl;
@@ -101,7 +101,7 @@ void	Account::displayStatus( void ) const{
 	std::cout<<" index:"<<_accountIndex<<";amount:"<<_amount<<";deposits:"<<_nbDeposits<<";withdrawals:"<<_nbWithdrawals<<std::endl;
 }
 
-void	Account::_displayTimestamp( void ){	
+void	Account::_displayTimestamp( void ){
 	const int MAXLEN = 80;
     char s[MAXLEN];
     time_t t = time(0);

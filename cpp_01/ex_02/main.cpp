@@ -5,33 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/01 18:31:58 by gajayme           #+#    #+#             */
-/*   Updated: 2022/06/02 14:46:00 by lyubov           ###   ########.fr       */
+/*   Created: 2022/06/02 14:46:43 by lyubov            #+#    #+#             */
+/*   Updated: 2022/06/02 17:42:33 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "string"
+#include "iostream"
 
 int main(void){
 
-	Zombie *a;
-	Zombie *b;
+	std::string str = "HI THIS IS BRAIN";
 
-	int n = 10;
-	a = zombieHorde(n, "Kristopher");
+	std::string *stringPTR = & str;
+	std::string &stringREF = str;
 
-	for (int i = 0; i != n; ++i){
-		a[i].announce();
-	}
+	std::cout<<"Adress STR: "<<&str<<std::endl;
+	std::cout<<"String PTR: "<<stringPTR<<std::endl;
+	std::cout<<"String REF: "<<&stringREF<<std::endl;
 
-	n = 5;
-	b = zombieHorde (n, "Jude");
-
-	for (int i = 0; i != n; ++i){
-		a[i].announce();
-	}
-
-	delete []b;
-	delete []a;
+	std::cout<<"\nSTR: "<<str<<std::endl;
+	std::cout<<"PTR: "<<*stringPTR<<std::endl;
+	std::cout<<"REF: "<<stringREF<<std::endl;
 	return (0);
 }
