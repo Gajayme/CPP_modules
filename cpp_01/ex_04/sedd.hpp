@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   sedd.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gajayme <gajayme@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/02 17:50:53 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/03 15:46:02 by gajayme          ###   ########.fr       */
+/*   Created: 2022/06/03 17:56:56 by gajayme           #+#    #+#             */
+/*   Updated: 2022/06/03 18:13:25 by gajayme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_HPP
-# define WEAPON_HPP
+#ifndef SEDD_HPP
+# define SEDD_HPP
 
-#include <iostream>
 #include <string>
-
-class Weapon
-{
-private:
-	std::string type;
-public:
-	Weapon(std::string type);
-	~Weapon();
-	const std::string&	getType();
-	void				setType(std::string new_type);
-};
+#include <iostream>
+#include <fstream>
 
 #endif

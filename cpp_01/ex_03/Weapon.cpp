@@ -3,28 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gajayme <gajayme@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:54:39 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/03 14:13:56 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/06/03 17:41:04 by gajayme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 
 Weapon::Weapon(std::string type): type(type){
-	std::cout<<type<<" created\n";
+	//std::cout<<type<<" created\n";
 }
 
 Weapon::~Weapon(){
-	std::cout<<type<<" broken\n";
+	//std::cout<<type<<" broken\n";
 }
 
 void Weapon::setType(std::string new_type){
-	type = new std::string (new_type);
-	//std::cout<<"seted\n";
+	type = new_type;
 }
 
-std::string& Weapon::getType(){
+const std::string& Weapon::getType(){
 	return type;
 }
