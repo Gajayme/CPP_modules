@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 11:18:20 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/04 19:55:52 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/06/04 19:53:56 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ Harl::Harl()
 	funcs[1] = &Harl::info;
 	funcs[2] = &Harl::warning;
 	funcs[3] = &Harl::error;
+	funcs[4] = NULL;
 }
 
 Harl::~Harl()
@@ -47,13 +48,20 @@ void Harl::warning( void ){
 };
 
 void Harl::error( void ){
-	std::cout<<"[ ERROR ]\nThis is unacceptable! I want to speak to the manager now.\n";
+	std::cout<<"[ ERROR ]\nThis is unacceptable! I want to speak to the manager now.";
 };
 
 void Harl::complain( std::string level ){
 
 	for (int i=0; i != 4; ++i){
-		if (level == lvl_arr[i])
-			(this->*funcs[i])();
+		if (level == lvl_arr[i]){
+			while (funcs[i]){
+				(this->*funcs[i])();
+				std::cout<<std::endl;
+				i++;
+			}
+			return ;
+		}
 	}
+	std::cout<<"[ Probably complaining about insignificant problems ]\n";
 }

@@ -6,21 +6,21 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 11:15:24 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/04 12:42:19 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/06/04 19:40:37 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
 int main(void){
-	Harl lil_harl;
+	Harl harl;
 
-	lil_harl.complain("debug");
+	harl.complain("DEBUG");
 	std::cout<<std::endl;
-	lil_harl.complain("info");
+	harl.complain("INFO");
 	std::cout<<std::endl;
-	lil_harl.complain("warning");
+	harl.complain("WARNING");
 	std::cout<<std::endl;
-	lil_harl.complain("error");
+	harl.complain("ERROR");
 	return (0);
 }

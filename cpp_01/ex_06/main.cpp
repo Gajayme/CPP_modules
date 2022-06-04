@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/04 11:15:37 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/04 19:34:27 by lyubov           ###   ########.fr       */
+/*   Created: 2022/06/04 11:15:24 by lyubov            #+#    #+#             */
+/*   Updated: 2022/06/04 19:50:07 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_HPP
-# define HARL_HPP
+#include "Harl.hpp"
 
-#include <iostream>
-#include <string>
+int main(int ac, char *av[]){
 
-class Harl
-{
-private:
-	void debug( void );
-	void info( void );
-	void warning( void );
-	void error( void );
+	if (ac != 2){
+		std::cout<<"Invalid args\n";
+		return (1);
+	}
 
-	std::string lvl_arr[4];
-	void (Harl::* funcs[4]) (void);
-
-public:
-	Harl();
-	~Harl();
-	void complain( std::string level );
-};
-
-#endif
+	Harl harl;
+	std::string lvl(av[1]);
+	harl.complain(lvl);
+	return (0);
+}
