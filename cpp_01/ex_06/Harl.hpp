@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 11:15:37 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/04 19:53:28 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/06/05 13:27:39 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 
 #include <iostream>
 #include <string>
+
+enum {
+	DEBUG,
+	INFO,
+	WARNING,
+	ERROR
+};
 
 class Harl
 {
