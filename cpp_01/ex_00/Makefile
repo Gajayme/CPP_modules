@@ -6,14 +6,15 @@ CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -O2
 RM			= rm -f
 
 SRC			= $(wildcard *.cpp)
+INC			= $(wildcard *.hpp)
 OBJS		= $(SRC:.cpp=.o)
 
 all: 		$(NAME)
 
-$(NAME):	$(OBJS) Makefile
+$(NAME):	$(OBJS) $(INC) Makefile
 			$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
-%.o : %.cpp
+%.o : %.cpp $(INC) $(SRC)
 			$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:

@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 11:18:20 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/04 19:55:52 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/06/06 18:03:37 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ void Harl::error( void ){
 void Harl::complain( std::string level ){
 
 	for (int i=0; i != 4; ++i){
-		if (level == lvl_arr[i])
+		if (level == lvl_arr[i]){
 			(this->*funcs[i])();
+			return ;
+		}
 	}
+	std::cout<<"Nothing!\n";
 }
