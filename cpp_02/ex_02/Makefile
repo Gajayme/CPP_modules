@@ -7,14 +7,14 @@ RM			= rm -f
 
 SRC			= $(wildcard *.cpp)
 INC			= $(wildcard *.hpp)
-OBJS		= $(SRC:.cpp=.o)
+OBJS		= $(SRC:%.cpp=%.o)
 
 all: 		$(NAME)
 
 $(NAME):	$(OBJS) $(INC) Makefile
 			$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
-%.o : %.cpp: $(SRC)
+%.o : %.cpp	$(INC)
 			$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
