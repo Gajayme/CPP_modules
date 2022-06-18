@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 15:14:12 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/17 16:23:53 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/06/18 13:28:10 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ Fixed::Fixed(){
 	std::cout<<"Default constructor called\n";
 	num = 0;
 }
+
+//int const Fixed::fractional_bits = 8;
 
 Fixed::Fixed(Fixed const& a){
 	std::cout<<"Copy constructor called\n";
