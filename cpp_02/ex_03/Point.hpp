@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 15:10:54 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/18 19:05:58 by lyubov           ###   ########.fr       */
+/*   Created: 2022/06/18 15:41:54 by lyubov            #+#    #+#             */
+/*   Updated: 2022/06/18 18:13:35 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-#define FIXED_HPP
+#ifndef POINT_HPP
+# define POINT_HPP
 
-#include <iostream>
+#include "Fixed.hpp"
 
-class Fixed
+class Point
 {
 private:
-
-	int num;
-	static const int fractional_bits = 8;
-
+	Fixed const x;
+	Fixed const y;
 public:
 
-	Fixed();								//c-r
-	Fixed(const Fixed & a);					//copy c-r
-	Fixed & operator=(const Fixed & a);		//as-t c-r
-	~Fixed();								//d-r
-
-	int getRawBits( void ) const;
-	void setRawBits(const int raw );
-
+	Point();
+	Point(float const x, float const y);
+	Point(Point const & a);
+	Point & operator =(Point const & a);
+	~Point();
 };
 
 #endif
+

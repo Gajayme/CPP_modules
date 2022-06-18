@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 15:14:12 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/18 13:27:59 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/06/18 21:23:53 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,22 @@ Fixed::Fixed(){
 	num = 0;
 }
 
-//int const Fixed::fractional_bits = 8;
-
-Fixed::Fixed(int const i): num (i << fractional_bits){
+Fixed::Fixed(const int i): num (i << fractional_bits){
 	std::cout<<"Int constructor called\n";
 }
 
-Fixed::Fixed(float const f){
+Fixed::Fixed(const float f){
 	num = (f * (static_cast<float>(1 << fractional_bits)));
 	std::cout<<"Float constructor called\n";
 }
 
 
-Fixed::Fixed(Fixed const& a){
+Fixed::Fixed(const Fixed & a){
 	std::cout<<"Copy constructor called\n";
 	this->num = a.getRawBits();
 }
 
-Fixed & Fixed::operator=(Fixed const & a){
+Fixed & Fixed::operator=(const Fixed & a){
 	std::cout<<"Copy assignment operator called\n";
 
 	if (this != &a){
@@ -61,7 +59,7 @@ int Fixed::getRawBits() const {
 	return (num);
 }
 
-void Fixed::setRawBits (int const raw ){
+void Fixed::setRawBits (const int raw ){
 	std::cout<<"setRawBits member function called\n";
 	num = raw;
 }

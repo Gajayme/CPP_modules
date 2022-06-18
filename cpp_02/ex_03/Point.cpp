@@ -1,47 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*   Point.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 15:14:12 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/18 21:23:45 by lyubov           ###   ########.fr       */
+/*   Created: 2022/06/18 15:41:57 by lyubov            #+#    #+#             */
+/*   Updated: 2022/06/18 19:23:32 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "Point.hpp"
 
-Fixed::Fixed(){
+Point::Point(): x(0), y(0){
 	std::cout<<"Default constructor called\n";
-	num = 0;
 }
 
-Fixed::Fixed(const Fixed & a){
+Point::Point(float const x, float const y): x(x), y(y){
+	std::cout<<"Float constructor called\n";
+}
+
+Point::Point(Point const & a): x(a.x), y(a.y) {
 	std::cout<<"Copy constructor called\n";
-	this->num = a.getRawBits();
 }
 
-Fixed & Fixed::operator=(const Fixed & a){
-	std::cout<<"Copy assignment operator called\n";
+//??????
+Point & Point::operator =(Point const & a){
+	std::cout<<"Assignment constructor called\n";
 
-	if (this != &a){
-		this->num = a.getRawBits();
-	}
+	(void) a;
+
 	return ( *this);
 }
 
-Fixed::~Fixed(){
+Point::~Point(){
 	std::cout<<"Destructor called\n";
 }
 
-
-int Fixed::getRawBits() const {
-	std::cout<<"getRawBits member function called\n";
-	return (num);
-}
-
-void Fixed::setRawBits (const int raw ){
-	std::cout<<"setRawBits member function called\n";
-	num = raw;
-}

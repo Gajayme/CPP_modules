@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 15:08:42 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/17 16:10:28 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/06/18 21:22:07 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 int main(void){
 
 	Fixed a;
-	Fixed const b( 10 );
-	Fixed const c( 42.42f );
-	Fixed const d( b );
+	const Fixed b( 10 );
+	const Fixed c( 42.42f );
+	const Fixed d( b );
 	a = Fixed( 1234.4321f );
-	Fixed const e( -101 );
-	Fixed const f( -100.65f );
+	const Fixed e( -101 );
+	const Fixed f( -100.65f );
 
 	std::cout<<"\n";
 	std::cout << "a is " << a << std::endl;
@@ -35,6 +35,8 @@ int main(void){
 	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
 	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
 	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+	std::cout << "e is " << e.toInt() << " as integer" << std::endl;
+	std::cout << "f is " << f.toInt() << " as integer" << std::endl;
 
 	return (0);
 }

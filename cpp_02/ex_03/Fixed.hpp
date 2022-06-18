@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 15:10:54 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/18 21:23:16 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/06/18 18:22:59 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ class Fixed
 private:
 
 	int num;
-	static const int fractional_bits = 8;
+	static int const fractional_bits = 8;
 
 public:
 
 	Fixed();
-	Fixed(const int i);
-	Fixed(const float f);
-	Fixed(const Fixed & a);
-	Fixed & operator=(const Fixed & a);
+	Fixed(int const i);
+	Fixed(float const f);
+	Fixed(Fixed const& a);
+	Fixed & operator=(Fixed const & a);
 	~Fixed();
 
 	int		toInt( void ) const;
@@ -44,11 +44,13 @@ public:
 	Fixed operator --(int);
 
 	static Fixed & min(Fixed &a, Fixed &b);
-	static const Fixed & min(const Fixed &a, const Fixed &b);
+	static const Fixed & min(Fixed const &a, Fixed const &b);
 
 	static Fixed & max(Fixed &a, Fixed &b);
-	static const Fixed & max(const Fixed &a, const Fixed &b);
+	static const Fixed & max(Fixed const &a, Fixed const &b);
 };
+
+//overloads
 
 std::ostream& operator <<(std::ostream &out, const Fixed &a);
 

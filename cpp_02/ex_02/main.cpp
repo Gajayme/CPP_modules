@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 15:08:42 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/18 15:26:53 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/06/18 21:23:27 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int main(void){
 
 	Fixed c(1000);
 	Fixed d(500.625f);
-	//Fixed d(500.625f);
 
 	std::cout<<"Comparison operators: >, <, >=, <=, == and !=\n\n";
 
@@ -108,8 +107,8 @@ int main(void){
 	std::cout<<"max ("<<d<<", "<< c<<") = "<<Fixed::max( d, c )<<std::endl;
 	std::cout<<"min ("<<d<<", "<< c<<") = "<<Fixed::min( d, c )<<std::endl;
 
-	Fixed const e(555.5f);
-	Fixed const f(555.625f);
+	const Fixed e(555.5f);
+	const Fixed f(555.625f);
 
 	std::cout<<"const max ("<<e<<", "<< f<<") = "<<Fixed::max( e, f )<<std::endl;
 	std::cout<<"const min ("<<e<<", "<< f<<") = "<<Fixed::min( e, f )<<std::endl;
