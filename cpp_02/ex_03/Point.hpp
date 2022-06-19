@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 15:41:54 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/18 18:13:35 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/06/19 12:49:49 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,16 @@ public:
 	Point(Point const & a);
 	Point & operator =(Point const & a);
 	~Point();
+
+	const Fixed &get_x() const;
+	const Fixed &get_y() const ;
+
 };
+
+bool bsp( Point const a, Point const b, Point const c, Point const point);
+
+bool operator ==(const Point &a, const Point &b);
+
 
 #endif
 

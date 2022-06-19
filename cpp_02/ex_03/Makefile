@@ -1,5 +1,5 @@
 
-NAME		=	fixed
+NAME		=	bsp
 
 CXX			= g++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -O2

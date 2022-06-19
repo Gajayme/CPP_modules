@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 15:14:12 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/18 18:57:49 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/06/19 17:44:59 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,6 @@ bool operator ==(const Fixed &a, const Fixed &b){
 bool operator !=(const Fixed &a, const Fixed &b){
 	return !(a == b);
 }
-
-//The 4 increment/decrement
 
 Fixed & Fixed::operator ++(){
 
