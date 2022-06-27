@@ -1,45 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 15:10:54 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/20 16:51:03 by lyubov           ###   ########.fr       */
+/*   Created: 2022/06/24 14:14:59 by lyubov            #+#    #+#             */
+/*   Updated: 2022/06/25 13:37:34 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-#define FIXED_HPP
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
+#include "ClapTrap.hpp"
 #include <iostream>
+#include <string>
 
-class Fixed
+class FragTrap : public ClapTrap
 {
 private:
 
-	int num;
-	static const int fractional_bits = 8;
-
 public:
 
-	Fixed();
+	FragTrap(std::string string = "Default");
+	FragTrap(const FragTrap & a);
+	FragTrap & operator=(const FragTrap & a);
+	~FragTrap();
 
-	Fixed(const int i);
-	Fixed(const float f);
-	Fixed(const Fixed & a);
-	Fixed & operator=(const Fixed & a);
-	~Fixed();
+	void attack(const std::string& target);
+	void highFivesGuys();
 
-	int		toInt( void ) const;
-	float	toFloat( void ) const;
-	int		getRawBits( void ) const;
-	void	setRawBits(const int raw );
-
+	static const unsigned int hp_init = 100;
+	static const unsigned int en_init = 100;
+	static const unsigned int ad_init = 30;
 };
 
-std::ostream& operator <<(std::ostream &out, const Fixed &a);
 
 #endif
-

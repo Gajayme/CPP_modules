@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 15:10:54 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/18 21:23:16 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/06/20 16:52:28 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #define FIXED_HPP
 
 #include <iostream>
-// do i need this???
-#include <cmath>
 
 class Fixed
 {

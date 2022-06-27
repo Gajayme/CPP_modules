@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 15:41:57 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/19 12:49:12 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/06/20 23:03:58 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,10 @@ Point::Point(Point const & a): x(a.x), y(a.y) {
 	//std::cout<<"Copy constructor called\n";
 }
 
-//??????
-Point & Point::operator =(Point const & a){
+Point & Point::operator =(Point const & a) {
 	//std::cout<<"Assignment constructor called\n";
-
 	(void) a;
-
-	return ( *this);
+	return (*this);
 }
 
 Point::~Point(){

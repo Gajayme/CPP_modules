@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 15:14:12 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/18 21:23:53 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/06/20 16:50:09 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ Fixed::Fixed(const float f){
 	num = (f * (static_cast<float>(1 << fractional_bits)));
 	std::cout<<"Float constructor called\n";
 }
-
 
 Fixed::Fixed(const Fixed & a){
 	std::cout<<"Copy constructor called\n";
@@ -52,7 +51,6 @@ int Fixed::toInt() const {
 float Fixed::toFloat() const {
 	return (static_cast<float>(num) / static_cast<float>(1 << fractional_bits));
 }
-
 
 int Fixed::getRawBits() const {
 	std::cout<<"getRawBits member function called\n";

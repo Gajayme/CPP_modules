@@ -1,45 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 15:10:54 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/20 16:51:03 by lyubov           ###   ########.fr       */
+/*   Created: 2022/06/24 15:32:33 by lyubov            #+#    #+#             */
+/*   Updated: 2022/06/25 14:06:43 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-#define FIXED_HPP
+#ifndef DIAMONDTRAP_HPP
+# define DIAMONDTRAP_HPP
 
-#include <iostream>
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-class Fixed
+
+class DiamondTrap: public ScavTrap, public FragTrap
 {
 private:
 
-	int num;
-	static const int fractional_bits = 8;
+	std::string name;
 
 public:
+	DiamondTrap(std::string string = "default");
+	DiamondTrap(const DiamondTrap & a);
+	DiamondTrap & operator=(const DiamondTrap & a);
+	~DiamondTrap();
 
-	Fixed();
-
-	Fixed(const int i);
-	Fixed(const float f);
-	Fixed(const Fixed & a);
-	Fixed & operator=(const Fixed & a);
-	~Fixed();
-
-	int		toInt( void ) const;
-	float	toFloat( void ) const;
-	int		getRawBits( void ) const;
-	void	setRawBits(const int raw );
-
+	void whoAmI();
+	void attac(const std::string& target);
 };
 
-std::ostream& operator <<(std::ostream &out, const Fixed &a);
-
 #endif
-

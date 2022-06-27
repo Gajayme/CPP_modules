@@ -5,34 +5,39 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/18 19:21:53 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/20 17:31:00 by lyubov           ###   ########.fr       */
+/*   Created: 2022/06/22 17:42:19 by lyubov            #+#    #+#             */
+/*   Updated: 2022/06/25 13:57:48 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
-#include "Point.hpp"
+#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
+
 
 int main(void){
 
-	Point a(1.0f, 1.0f);
-	Point b(3.0f, 1.0f);
-	Point c(2.0f, 3.0f);
+	ClapTrap a;
+	ClapTrap b("Iggy");
+	FragTrap c;
+	FragTrap d("Bobby");
+	c = FragTrap("Dufelshmertz");
 
-	Point point(2.0f, 2.0f);
-	bsp(a, b, c, point);
+	std::cout<<std::endl;
+	c.attack("Someone");
+	std::cout<<std::endl;
+	c.beRepaired(10);
+	std::cout<<std::endl;
+	c.takeDamage(50);
+	std::cout<<std::endl;
+	c.takeDamage(100);
+	std::cout<<std::endl;
+	c.beRepaired(1);
+	std::cout<<std::endl;
+	c.beRepaired(999);
+	std::cout<<std::endl;
+	c.highFivesGuys();
+	std::cout<<std::endl;
 
-	Point point_0(2.7f, 1.1f);
-	bsp(a, b, c, point_0);
-
-	Point point_1(4.0f, 5.0f);
-	bsp(a, b, c, point_1);
-
-	Point point_2(1.0f, 1.0f);
-	bsp(a, b, c, point_2);
-
-	Point point_3(1.0f, 2.5f);
-	bsp(a, b, c, point_3);
-
-	return(0);
+	return (0);
 }
