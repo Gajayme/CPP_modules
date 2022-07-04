@@ -5,39 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/22 17:42:19 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/30 15:43:42 by lyubov           ###   ########.fr       */
+/*   Created: 2022/06/27 21:22:09 by lyubov            #+#    #+#             */
+/*   Updated: 2022/06/29 14:47:58 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
+#include "Animal.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
 
 
 int main(void){
 
-	ClapTrap a;
-	ClapTrap b("Iggy");
-	FragTrap c;
-	FragTrap d("Bobby");
-	c = FragTrap("Dufelshmertz");
-	FragTrap f(c);
+	Cat cat1;
+	Dog dog1;
+	//Animal anim1;
 
 	std::cout<<std::endl;
-	c.attack("Someone");
-	std::cout<<std::endl;
-	c.beRepaired(10);
-	std::cout<<std::endl;
-	c.takeDamage(50);
-	std::cout<<std::endl;
-	c.takeDamage(100);
-	std::cout<<std::endl;
-	c.beRepaired(1);
-	std::cout<<std::endl;
-	c.beRepaired(999);
-	std::cout<<std::endl;
-	c.highFivesGuys();
+	cat1.makeSound();
+	dog1.makeSound();
 	std::cout<<std::endl;
 
 	return (0);

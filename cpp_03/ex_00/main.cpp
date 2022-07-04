@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 17:42:19 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/25 12:38:44 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/06/30 15:41:50 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int main(void){
 	for (int i = 0; i != 10; ++i){
 		d.attack("Enemy");
 	}
+	d.beRepaired(1);
 	std::cout<<std::endl;
 	return (0);
 
