@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 15:08:55 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/04 15:36:45 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/07/04 16:00:25 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ AMateria::AMateria(std::string const & type): _type(type){
 	_is_taken = false;
 }
 
-AMateria::AMateria(const AMateria & a): _type(a.getType()){
+AMateria::AMateria(const AMateria & a): _type(a.getType()), _is_taken(false){
 	std::cout<<"AMateria copy constructor\n";
 }
 

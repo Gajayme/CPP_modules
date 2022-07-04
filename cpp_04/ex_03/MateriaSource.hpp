@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/29 14:58:44 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/04 16:27:34 by lyubov           ###   ########.fr       */
+/*   Created: 2022/07/04 17:46:05 by lyubov            #+#    #+#             */
+/*   Updated: 2022/07/04 18:04:45 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMATERIA_HPP
-# define AMATERIA_HPP
+#ifndef MATERIASOURCE.HPP
+# define MATERIASOURCE.HPP
 
-# include "ICharacter.hpp"
-# include <iostream>
-# include <string>
+#include "IMateriaSource.hpp"
+#include "AMateria.hpp"
 
 # define COLOR_DEFAULT "\033[0m"
 # define COLOR_RED "\033[31m"
@@ -24,27 +23,21 @@
 # define COLOR_MAGENTA "\033[35m"
 # define COLOR_YELLOW "\033[33m"
 
-class ICharacter;
-class IMateriaSource;
+class MateriaSource: public IMateriaSource {
 
-class AMateria {
+private:
+	static const int	max_idx = 4;
+	AMateria* 			_materias[max_idx];
 
-protected:
-	const std::string	_type;
-	bool				_is_taken;
 public:
+	MateriaSource();
+	MateriaSource(MateriaSource const & a);
+	MateriaSource & operator=(MateriaSource const & a);
+	~MateriaSource();
 
-	AMateria(std::string const & type);
-	AMateria(const AMateria & a);
-	AMateria & operator =(const AMateria & a);
-	virtual ~AMateria();
-
-	std::string const & getType() const;
-	virtual AMateria* clone() const = 0;
-	virtual void use(ICharacter& target) = 0;
-
-	bool get_is_taken();
-	void set_is_taken(bool);
+	virtual void learnMateria(AMateria*);
+	virtual AMateria* createMateria(std::string const & type);
 };
+
 
 #endif

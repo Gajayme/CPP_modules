@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 09:57:43 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/04 15:45:41 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/07/04 17:32:43 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,12 @@ Character::Character(const Character & a){
 	_name = a.getName();
 	_num_equipped = a._num_equipped;
 	for (int i = 0; i != max_idx; ++i){
-		_materials[i] = a._materials[i];
+		if (a._materials[i]){
+			_materials[i] = a._materials[i]->clone();
+			_materials[i]->set_is_taken(true);
+		}
+		else
+			_materials[i] = NULL;
 	}
 }
 
@@ -39,14 +44,18 @@ Character & Character::operator=(const Character & a){
 		_name = a.getName();
 		_num_equipped = a._num_equipped;
 		for (int i = 0; i != max_idx; ++i){
-			if (_materials[i])
+			if (_materials[i]){
 				delete _materials[i];
-			_materials[i] = a._materials[i];
+				_materials[i] = NULL;
+				if (a._materials[i]){
+					_materials[i] = a._materials[i]->clone();
+					_materials[i]->set_is_taken(true);
+				}
+			}
 		}
 	}
 	return (*this);
 }
-
 
 Character::~Character() {
 
@@ -92,8 +101,19 @@ void Character::unequip(int idx){
 
 void Character::use(int idx, ICharacter& target){
 
-	if (idx < 0 || idx >= max_idx || _materials[idx] == NULL)
+	if (idx < 0 || idx >= max_idx){
+		std::cout<<COLOR_RED<<this->getName()<<"Wrong slot: "<<idx<<std::endl<<COLOR_DEFAULT;
 		return ;
+	}
+	else if(!_materials[idx]){
+		std::cout<<COLOR_RED<<this->getName()<<" empty slot: "<<idx<<std::endl<<COLOR_DEFAULT;
+		return ;
+	}
+
 	std::cout<<this->getName()<<" ";
 	_materials[idx]->use(target);
+}
+
+void Character::set_name(std::string new_name){
+	_name = new_name;
 }

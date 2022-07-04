@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 15:29:28 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/04 15:03:34 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/07/04 17:28:39 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,52 @@ int main (void){
 
 	AMateria* ice = new Ice();
 	AMateria* cure = new Cure();
-	ICharacter *timmy = new Character("Timmy");
-	ICharacter *neddy = new Character("Neddy");
+	std::cout<<std::endl;
+	Character *timmy = new Character("Timmy");
 
-	ice->getType();
-	cure->getType();
-	std::cout<<timmy->getName()<<std::endl;
-	std::cout<<neddy->getName()<<std::endl;
-	timmy->equip(ice);
 	timmy->equip(ice);
 	timmy->equip(cure);
-	timmy->equip(cure);
-	timmy->equip(cure);
-	neddy->equip(cure);
-	timmy->use(0, *neddy);
-	timmy->use(1, *neddy);
-	timmy->use(2, *neddy);
-	timmy->use(3, *neddy);
-	timmy->use(4, *neddy);
-	timmy->use(0, *neddy);
+
+	std::cout<<std::endl;
+
+	Character *neddy = new Character(*timmy);
+	neddy->set_name("Neddy");
+
+	std::cout<<std::endl;
+
 	neddy->use(0, *timmy);
+	neddy->use(1, *timmy);
+	neddy->use(2, *timmy);
+
+	std::cout<<std::endl;
 
 	delete timmy;
 	delete neddy;
+
+	std::cout<<std::endl;
+	// ice->getType();
+	// cure->getType();
+	// std::cout<<timmy->getName()<<std::endl;
+	// std::cout<<neddy->getName()<<std::endl;
+	// timmy->equip(ice);
+	// timmy->equip(ice);
+	// timmy->equip(cure);
+	// timmy->equip(cure);
+	// timmy->equip(cure);
+	// neddy->equip(cure);
+	// timmy->use(0, *neddy);
+	// timmy->use(1, *neddy);
+	// timmy->use(2, *neddy);
+	// timmy->use(3, *neddy);
+	// timmy->use(4, *neddy);
+	// timmy->use(0, *neddy);
+	// neddy->use(0, *timmy);
+
+	// delete timmy;
+	// delete neddy;
+
+
+
 	// Ice *ice2;
 
 	// std::cout<<std::endl;

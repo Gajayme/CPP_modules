@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 09:53:06 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/03 17:58:35 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/07/04 17:25:40 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ class Character: public ICharacter
 {
 private:
 
-	static const int max_idx = 4;
-	std::string		_name;
-	int	_num_equipped;
-	AMateria *	_materials[max_idx];
+	static const int	max_idx = 4;
+
+	std::string			_name;
+	int					_num_equipped;
+	AMateria *			_materials[max_idx];
 
 public:
 	Character(std::string name = "default");
@@ -37,6 +38,7 @@ public:
 	virtual void unequip(int idx);
 	virtual void use(int idx, ICharacter& target);
 
+	void set_name(std::string new_name);
 };
 
 #endif
