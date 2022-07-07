@@ -6,12 +6,12 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 17:46:05 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/04 18:04:45 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/07/07 16:42:43 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATERIASOURCE.HPP
-# define MATERIASOURCE.HPP
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
 
 #include "IMateriaSource.hpp"
 #include "AMateria.hpp"
@@ -22,11 +22,13 @@
 # define COLOR_BLUE "\033[34m"
 # define COLOR_MAGENTA "\033[35m"
 # define COLOR_YELLOW "\033[33m"
+# define COLOR_UNKNOWN "\033[36m"
 
 class MateriaSource: public IMateriaSource {
 
 private:
 	static const int	max_idx = 4;
+	int					_num_learned;
 	AMateria* 			_materias[max_idx];
 
 public:
@@ -35,7 +37,7 @@ public:
 	MateriaSource & operator=(MateriaSource const & a);
 	~MateriaSource();
 
-	virtual void learnMateria(AMateria*);
+	virtual void learnMateria(AMateria* materia);
 	virtual AMateria* createMateria(std::string const & type);
 };
 

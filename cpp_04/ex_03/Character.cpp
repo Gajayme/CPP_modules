@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 09:57:43 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/04 17:32:43 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/07/07 22:56:56 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 Character::Character(std::string name){
 
-	std::cout<<"Character constructor\n";
+	std::cout<<COLOR_YELLOW<<"Character constructor\n"<<COLOR_DEFAULT;
 	_name = name;
-	_num_equipped = 0;
+	_num_eq = 0;
+	_materials_dropped = NULL;
+	_num_dr = 0;
 	for (int i = 0; i != max_idx; ++i){
 		_materials[i] = NULL;
 	}
@@ -24,9 +26,11 @@ Character::Character(std::string name){
 
 Character::Character(const Character & a){
 
-	std::cout<<"Character copy constructor\n";
+	std::cout<<COLOR_YELLOW<<"Character copy constructor\n"<<COLOR_DEFAULT;
 	_name = a.getName();
-	_num_equipped = a._num_equipped;
+	_num_eq = a._num_eq;
+	_materials_dropped = NULL;
+	_num_dr = 0;
 	for (int i = 0; i != max_idx; ++i){
 		if (a._materials[i]){
 			_materials[i] = a._materials[i]->clone();
@@ -39,10 +43,12 @@ Character::Character(const Character & a){
 
 Character & Character::operator=(const Character & a){
 
-	std::cout<<"Character assignment operator\n";
+	std::cout<<COLOR_YELLOW<<"Character assignment operator\n"<<COLOR_DEFAULT;
 	if (this != &a){
 		_name = a.getName();
-		_num_equipped = a._num_equipped;
+		_num_eq = a._num_eq;
+		_num_dr = 0;
+		_materials_dropped = NULL;
 		for (int i = 0; i != max_idx; ++i){
 			if (_materials[i]){
 				delete _materials[i];
@@ -59,11 +65,18 @@ Character & Character::operator=(const Character & a){
 
 Character::~Character() {
 
-	std::cout<<"Character destructor\n";
+	if (!_num_eq)
+		std::cout<<COLOR_YELLOW<<"Character "<<COLOR_DEFAULT<<_name<<" destructor.\n";
+	else
+		std::cout<<COLOR_YELLOW<<"Character "<<COLOR_DEFAULT<<_name<<" destructor:\n";
 	for (int i = 0; i != max_idx; ++i){
-			if (_materials[i])
-				delete _materials[i];
+		if (_materials[i])
+			delete _materials[i];
 	}
+	for (int i = 0; i != _num_dr; ++i)
+		delete _materials_dropped[i];
+	if (_materials_dropped)
+		delete [] _materials_dropped;
 }
 
 std::string const & Character::getName() const{
@@ -73,36 +86,56 @@ std::string const & Character::getName() const{
 
 void Character::equip(AMateria* m){
 
-	std::cout<<this->getName()<<" character equip\n";
-	if (_num_equipped == max_idx) {
-		std::cout<<COLOR_RED<<this->getName()<<" inventory is full :(\n"<<COLOR_DEFAULT;
+	if (!m){
+		std::cout<<COLOR_RED<<"I cant equip nothing!\n"<<COLOR_DEFAULT;
 		return ;
 	}
 	else if (m->get_is_taken()){
-		std::cout<<COLOR_RED<<"Already posessed :(\n"<<COLOR_DEFAULT;
+		std::cout<<COLOR_RED<<"Already posessed!\n"<<COLOR_DEFAULT;
 		return ;
 	}
-	_num_equipped += 1;
+	else if (_num_eq == max_idx) {
+		std::cout<<COLOR_RED<<this->getName()<<" inventory is full!\n"<<COLOR_DEFAULT;
+		delete m;
+		return ;
+	}
+	_num_eq += 1;
 	for (int i = 0; i != max_idx; ++i){
 		if (_materials[i] == NULL){
 			_materials[i] = m;
 			m->set_is_taken(true);
-			std::cout<<COLOR_GREEN<<"Equiped :)\n"<<COLOR_DEFAULT;
+			std::cout<<COLOR_GREEN<<"Equiped\n"<<COLOR_DEFAULT;
 			return ;
 		}
 	}
 }
 
 void Character::unequip(int idx){
-	if (idx >= 0 && idx <= _num_equipped)
-		_materials[idx] = NULL;
 
+
+	if (idx < 0 || idx > 3 || !_materials[idx]){
+		std::cout<<COLOR_RED<<"Cant't unequip at slot: "<<idx<<std::endl<<COLOR_DEFAULT;
+		return ;
+	}
+
+	AMateria ** tmp = new AMateria *[_num_dr + 1];
+
+	for(int i = 0; i != _num_dr; ++i)
+		tmp[i] = _materials_dropped[i];
+	tmp[_num_dr] = _materials[idx];
+	_num_dr += 1;
+	_num_eq -= 1;
+	if (_num_dr != 0)
+		delete [] _materials_dropped;
+	_materials_dropped = tmp;
+	std::cout<<"Unequipped: "<<_materials[idx]->getType()<<" at slot "<<idx<<std::endl<<COLOR_DEFAULT;
+	_materials[idx] = NULL;
 }
 
 void Character::use(int idx, ICharacter& target){
 
 	if (idx < 0 || idx >= max_idx){
-		std::cout<<COLOR_RED<<this->getName()<<"Wrong slot: "<<idx<<std::endl<<COLOR_DEFAULT;
+		std::cout<<this->getName()<<COLOR_RED<<" wrong slot: "<<idx<<std::endl<<COLOR_DEFAULT;
 		return ;
 	}
 	else if(!_materials[idx]){

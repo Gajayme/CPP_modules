@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 09:39:25 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/04 15:41:05 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/07/07 17:14:37 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 Ice::Ice(): AMateria("ice") {
 
-	std::cout<<"Ice constructor\n";
+	std::cout<<COLOR_BLUE<<"Ice"<<COLOR_DEFAULT<<" constructor\n";
 }
 
 Ice::Ice(const Ice & a): AMateria(a) {
 
-	std::cout<<"Ice copy constructor\n";
+	std::cout<<COLOR_BLUE<<"Ice"<<COLOR_DEFAULT<<" copy constructor\n";
 }
 
 Ice & Ice::operator =(const Ice & a) {
 
-	std::cout<<"Ice copy constructor\n";
+	std::cout<<COLOR_BLUE<<"Ice"<<COLOR_DEFAULT<<" copy constructor\n";
 	if (this != &a){
 		AMateria::operator=(a);
 	}
@@ -33,11 +33,11 @@ Ice & Ice::operator =(const Ice & a) {
 
 Ice::~Ice(){
 
-	std::cout<<"Ice destructor\n";
+	std::cout<<COLOR_BLUE<<"Ice"<<COLOR_DEFAULT<<" destructor -> ";
 }
 
 Ice* Ice::clone() const {
-	std::cout<<"Ice clone method\n";
+	std::cout<<COLOR_BLUE<<"Ice"<<COLOR_DEFAULT<<" clone method\n";
 	return (new Ice(*this));
 }
 

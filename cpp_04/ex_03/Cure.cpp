@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 15:43:50 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/04 15:40:52 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/07/07 17:14:17 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 Cure::Cure(): AMateria("cure"){
 
-	std::cout<<"Cure constructor\n";
+	std::cout<<COLOR_GREEN<<"Cure"<<COLOR_DEFAULT<<" constructor\n";
 }
 
 Cure::Cure(const Cure & a): AMateria(a){
 
-	std::cout<<"Cure copy constructor\n";
+	std::cout<<COLOR_GREEN<<"Cure"<<COLOR_DEFAULT<<" copy constructor\n";
 }
 
 Cure & Cure::operator =(const Cure & a){
 
-	std::cout<<"Cure assignment operator\n";
+	std::cout<<COLOR_GREEN<<"Cure"<<COLOR_DEFAULT<<" assignment operator\n";
 	if (this != &a){
 		AMateria::operator=(a);
 	}
@@ -33,11 +33,11 @@ Cure & Cure::operator =(const Cure & a){
 
 Cure::~Cure(){
 
-	std::cout<<"Cure destructor\n";
+	std::cout<<COLOR_GREEN<<"Cure"<<COLOR_DEFAULT<<" destructor -> ";
 }
 
 Cure* Cure::clone() const {
-	std::cout<<"Cure clone method\n";
+	std::cout<<COLOR_GREEN<<"Cure"<<COLOR_DEFAULT<<" clone method\n";
 	return (new Cure(*this));
 }
 

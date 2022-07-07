@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 09:53:06 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/04 17:25:40 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/07/07 21:55:32 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ private:
 	static const int	max_idx = 4;
 
 	std::string			_name;
-	int					_num_equipped;
+	int					_num_eq;
+	int					_num_dr;
 	AMateria *			_materials[max_idx];
+	AMateria **			_materials_dropped;
 
 public:
 	Character(std::string name = "default");
