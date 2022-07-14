@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 21:28:24 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/28 15:54:35 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/07/08 13:41:36 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ Animal::~Animal(){
 }
 
 void Animal::makeSound() const {
-
+	//std::cout<<COLOR_MAGENTA<<"silence...\n"<<COLOR_DEFAULT;
 }
 
 std::string Animal::getType() const {

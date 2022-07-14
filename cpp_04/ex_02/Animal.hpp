@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 21:26:02 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/29 14:43:56 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/07/08 13:48:20 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ class Animal
 {
 protected:
 	std::string _type;
+	Animal(std::string type = "Default");
 public:
 
-	Animal(std::string type = "Default");
 	Animal(const Animal & a);
 	Animal & operator =(const Animal & a);
 	virtual ~Animal();

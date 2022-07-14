@@ -35,7 +35,7 @@ public:
 	Brain & operator=(const Brain & a);
 	~Brain();
 
-	std::string get_idea(unsigned int num) const;
+	std::string get_idea(int num) const;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 15:29:28 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/07 22:57:21 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/07/08 13:50:31 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,13 @@ int main (void){
 	me->unequip(4);
 	std::cout<<std::endl;
 
+	AMateria* tmp;
+	tmp = src->createMateria("cure");
+	bob->equip(tmp);
+	bob->equip(tmp);
+	me->equip(tmp);
+
+	std::cout<<std::endl;
 	me->equip(src->createMateria("cure"));
 	me->equip(src->createMateria("cure"));
 	me->use(3, *bob);

@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 09:57:43 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/07 22:56:56 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/07/08 13:52:55 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void Character::equip(AMateria* m){
 		if (_materials[i] == NULL){
 			_materials[i] = m;
 			m->set_is_taken(true);
-			std::cout<<COLOR_GREEN<<"Equiped\n"<<COLOR_DEFAULT;
+			std::cout<<_name<<COLOR_GREEN<<" equiped "<<COLOR_DEFAULT<<m->getType()<<std::endl;
 			return ;
 		}
 	}
@@ -128,7 +128,7 @@ void Character::unequip(int idx){
 	if (_num_dr != 0)
 		delete [] _materials_dropped;
 	_materials_dropped = tmp;
-	std::cout<<"Unequipped: "<<_materials[idx]->getType()<<" at slot "<<idx<<std::endl<<COLOR_DEFAULT;
+	std::cout<<_name<<" Unequipped: "<<_materials[idx]->getType()<<" at slot "<<idx<<std::endl<<COLOR_DEFAULT;
 	_materials[idx] = NULL;
 }
 

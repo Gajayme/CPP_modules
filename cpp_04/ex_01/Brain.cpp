@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 16:13:44 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/29 14:17:07 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/07/08 13:47:07 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ Brain::~Brain(){
 	std::cout<<COLOR_MAGENTA<<"Brain destructor\n"<<COLOR_DEFAULT;
 }
 
-std::string Brain::get_idea(unsigned int num) const{
+std::string Brain::get_idea(int num) const{
 
-	if (num <= 99)
+	if (num <= 99 && num >= 0)
 		return (_ideas[num]);
 	return ("Invalid idea id " + std::to_string(num));
 };

@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 21:22:09 by lyubov            #+#    #+#             */
-/*   Updated: 2022/06/28 16:06:47 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/07/08 13:40:41 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,24 @@
 
 int main(void){
 
-	// std::cout<<"===My tests===\n\n";
+	std::cout<<"===My tests===\n\n";
 
-	// Animal anim;
-	// Animal anim_1("Unknown animal");
+	Animal anim;
+	Animal anim_1("Unknown animal");
 
-	// anim.getType();
-	// anim_1.getType();
+	std::cout<<anim.getType()<<std::endl;
+	anim_1.getType();
 
 
-	// Cat cat;
-	// Dog dog;
-	// dog.makeSound();
-	// cat.makeSound();
+	Cat cat;
+	Dog dog;
+	dog.makeSound();
+	cat.makeSound();
 
-	// cat.getType();
-	// dog.getType();
+	cat.getType();
+	dog.getType();
 
-	std::cout<<"===Subject tests===\n\n";
+	std::cout<<"\n===Subject tests===\n\n";
 
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
@@ -57,5 +57,6 @@ int main(void){
 	delete meta;
 	delete j;
 	delete i;
+	delete h;
 	return (0);
 }
