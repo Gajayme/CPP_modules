@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 17:51:12 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/14 19:35:32 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/07/16 23:13:04 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,21 @@
 
 Bureaucrat::Bureaucrat(std::string name, int grade): name_(name){
 
+	std::cout<<"Bureaucrat constructor called\n";
 	if (grade > 150)
-		throw GradeTooHighException();
-	else if (grade < 1)
 		throw GradeTooLowException();
+	else if (grade < 1)
+		throw GradeTooHighException();
 	grade_ = grade;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat & a): name_(a.getName()), grade_(a.getGrade()){
+	std::cout<<"Bureaucrat copy called\n";
 
 }
 
 Bureaucrat & Bureaucrat::operator=(const Bureaucrat & a){
+	std::cout<<"Bureaucrat assignment called\n";
 	if (this != &a){
 		grade_ = a.getGrade();
 	}
@@ -33,9 +36,9 @@ Bureaucrat & Bureaucrat::operator=(const Bureaucrat & a){
 }
 
 Bureaucrat::~Bureaucrat(){
+	std::cout<<"Bureaucrat destructor called\n";
 
 }
-
 
 const char * Bureaucrat::GradeTooHighException::what() const throw(){
 	return("BureaucratException: grade too hight");

@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 18:30:44 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/17 13:26:18 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/07/17 15:02:43 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 
 //CLASSIC
-Form::Form(std::string name, int grade): name_(name), required_grade_(grade){
+Form::Form(std::string name, int sgrade, int egrade): name_(name), sign_grade_(sgrade), exec_grade_(egrade){
 
 	std::cout<<"Form constructor\n";
-	if (grade > 150){
+	if (sign_grade_ > 150 || exec_grade_ > 150){
 		throw GradeTooLowException();
 	}
-	else if(grade < 1){
+	else if(sign_grade_ < 1 || exec_grade_ < 1){
 		throw GradeTooHighException();
 	}
 	if_signed_ = 0;
 }
 
-Form::Form(const Form &a): name_(a.getName()), required_grade_(a.getReqGrade()), if_signed_(a.getIfSigned()){
+Form::Form(const Form &a): name_(a.getName()), sign_grade_(a.getSGrade()), exec_grade_(a.getEGrade()),if_signed_(a.getIfSigned()){
 	std::cout<<"Form copy\n";
 
 }
@@ -44,7 +44,7 @@ Form & Form::operator=(const Form & a){
 
 void Form::beSigned(const Bureaucrat &a){
 
-	if (a.getGrade() > required_grade_){
+	if (a.getGrade() > sign_grade_){
 		std::cout<<COLOR_YELLOW<<a.getName()<<" couldn’t sign "<<name_<<" because his grade is low\n"<<COLOR_DEFAULT;
 		throw GradeTooLowException();
 	}
@@ -54,17 +54,38 @@ void Form::beSigned(const Bureaucrat &a){
 	}
 	if_signed_ = 1;
 	std::cout<<COLOR_GREEN<<a.getName()<<" signed "<<name_<<::std::endl<<COLOR_DEFAULT;
-	//std::cout<<COLOR_GREEN<<name_<<" have been signed by "<<a.getName()<<std::endl<<COLOR_DEFAULT;
 }
 
+void Form::execute(std::string target, const Bureaucrat &a) const{
+
+	(void) target;
+
+	if (a.getGrade() > exec_grade_){
+		std::cout<<COLOR_YELLOW<<a.getName()<<" couldn’t exec "<<name_<<" because his grade is low\n"<<COLOR_DEFAULT;
+		throw GradeTooLowException();
+	}
+	else if (!if_signed_){
+			std::cout<<COLOR_YELLOW<<a.getName()<<" couldn’t sign "<<name_<<" because its unsigned\n"<<COLOR_DEFAULT;
+		throw FormUnsignedException();
+	}
+	std::cout<<COLOR_GREEN<<a.getName()<<" exec "<<name_<<::std::endl<<COLOR_DEFAULT;
+}
+
+void Form::set_if_signed(bool if_signed){
+	if_signed_ = if_signed;
+}
 
 //GETTERS
 std::string Form::getName() const{
 	return (name_);
 }
 
-int	Form::getReqGrade() const{
-	return (required_grade_);
+int	Form::getSGrade() const{
+	return (sign_grade_);
+}
+
+int Form::getEGrade() const{
+	return(exec_grade_);
 }
 
 bool Form::getIfSigned() const{
@@ -74,7 +95,7 @@ bool Form::getIfSigned() const{
 
 //COUT
 std::ostream & operator <<(std::ostream &out, const Form & a){
-	out<<COLOR_MAGENTA<<a.getName()<<" form, grade "<<a.getReqGrade();
+	out<<COLOR_MAGENTA<<a.getName()<<" form, sign grade: "<<a.getSGrade()<<" "<<"exec grade: "<<a.getEGrade();
 	if (a.getIfSigned())
 		out<<COLOR_GREEN<<". Signed\n"<<COLOR_DEFAULT;
 	else
@@ -95,4 +116,8 @@ const char * Form::GradeTooLowException::what() const throw(){
 
 const char * Form::FormAlreadySignedException::what() const throw(){
 	return("FormException: form already signed");
+}
+
+const char * Form::FormUnsignedException::what() const throw(){
+	return("FormException: form unsigned");
 }

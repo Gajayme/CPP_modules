@@ -6,94 +6,117 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 17:46:06 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/16 23:42:55 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/07/17 15:30:17 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include "Form.hpp"
 
 int main(void){
 
-	{
-		std::cout<<"===Contrucroes testing===\n\n";
-
-		std::cout<<COLOR_BLUE<<"Bureucraes:\n"<<COLOR_DEFAULT;
-		Bureaucrat test("test", 100);
-		Bureaucrat test2(test);
-		Bureaucrat test3("test3");
-		test3 = test2;
-		std::cout<<test<<test2<<test3;
-		std::cout<<COLOR_MAGENTA<<"\nForms:\n"<<COLOR_DEFAULT;
-
-		Form a1("a1", 10);
-		Form a2(a1);
-		//Form a3("a3");
-		//a3 = a2;
-		std::cout<<a1<<a2;
-	}
-	std::cout<<"\n=== End test ===\n\n";
-
 	try{
-		Bureaucrat bob("bob", 120);
-		Form a1("a1", 130);
-		std::cout<<bob;
-		std::cout<<a1;
+		Bureaucrat bob("bob", 145);
+		Bureaucrat jud("jud", 137);
+		ShrubberyCreationForm a1("a1");
+
 		bob.signForm(a1);
-		std::cout<<a1;
+		a1.execute("home", jud);
 	}
 	catch(std::exception &e){
 		std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
 	}
 
-	std::cout<<std::endl;
+	// ShrubberyCreationForm a2(a1);
+	// std::cout<<a1;
+	// bob.signForm(a1);
+	// std::cout<<a1;
 
-	try{
-		Bureaucrat bob("bob", 150);
-		Form a1("a1", 130);
-		std::cout<<bob;
-		std::cout<<a1;
-		bob.signForm(a1);
-		std::cout<<a1;
-	}
-	catch(std::exception &e){
-		std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
-	}
+	// ShrubberyCreationForm a3(a1);
+	// std::cout<<a2;
+	// std::cout<<a3;
+	// std::cout<<std::endl;
 
-	std::cout<<std::endl;
+		// {
+	// 	std::cout<<"===Contrucroes testing===\n\n";
 
-	try{
-		Bureaucrat bob("bob", 120);
-		Form a1("a1", 130);
-		std::cout<<bob;
-		std::cout<<a1;
-		bob.signForm(a1);
-		bob.signForm(a1);
-		std::cout<<a1;
-		std::cout<<std::endl;
-	}
-	catch(std::exception &e){
-		std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
-	}
+	// 	std::cout<<COLOR_BLUE<<"Bureucraes:\n"<<COLOR_DEFAULT;
+	// 	Bureaucrat test("test", 100);
+	// 	Bureaucrat test2(test);
+	// 	Bureaucrat test3("test3");
+	// 	test3 = test2;
+	// 	std::cout<<test<<test2<<test3;
+	// 	std::cout<<COLOR_MAGENTA<<"\nForms:\n"<<COLOR_DEFAULT;
 
-	std::cout<<std::endl;
+	// 	Form a1("a1", 10);
+	// 	Form a2(a1);
+	// 	//Form a3("a3");
+	// 	//a3 = a2;
+	// 	std::cout<<a1<<a2;
+	// }
+	// std::cout<<"\n=== End test ===\n\n";
 
-	try{
-		Form a1("a1", 0);
-	}
-	catch (std::exception &e){
-		std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
-	}
+	// try{
+	// 	Bureaucrat bob("bob", 120);
+	// 	Form a1("a1", 130);
+	// 	std::cout<<bob;
+	// 	std::cout<<a1;
+	// 	bob.signForm(a1);
+	// 	std::cout<<a1;
+	// }
+	// catch(std::exception &e){
+	// 	std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
+	// }
 
-	std::cout<<std::endl;
+	// std::cout<<std::endl;
 
-	try{
-		Form a1("a1", 151);
-	}
-	catch(std::exception &e) {
-		std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
-	}
+	// try{
+	// 	Bureaucrat bob("bob", 150);
+	// 	Form a1("a1", 130);
+	// 	std::cout<<bob;
+	// 	std::cout<<a1;
+	// 	bob.signForm(a1);
+	// 	std::cout<<a1;
+	// }
+	// catch(std::exception &e){
+	// 	std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
+	// }
+
+	// std::cout<<std::endl;
+
+	// try{
+	// 	Bureaucrat bob("bob", 120);
+	// 	Form a1("a1", 130);
+	// 	std::cout<<bob;
+	// 	std::cout<<a1;
+	// 	bob.signForm(a1);
+	// 	bob.signForm(a1);
+	// 	std::cout<<a1;
+	// 	std::cout<<std::endl;
+	// }
+	// catch(std::exception &e){
+	// 	std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
+	// }
+
+	// std::cout<<std::endl;
+
+	// try{
+	// 	Form a1("a1", 0);
+	// }
+	// catch (std::exception &e){
+	// 	std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
+	// }
+
+	// std::cout<<std::endl;
+
+	// try{
+	// 	Form a1("a1", 151);
+	// }
+	// catch(std::exception &e) {
+	// 	std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
+	// }
 	// try{
 	// 	Form a2("a2", 160);
 	// }
