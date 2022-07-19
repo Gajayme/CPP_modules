@@ -6,174 +6,103 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 17:46:06 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/17 15:30:17 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/07/19 14:27:52 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 #include "Form.hpp"
 
 int main(void){
 
+	std::cout<<COLOR_MAGENTA<<"\n===1st case===\n\n"<<COLOR_DEFAULT;
 	try{
-		Bureaucrat bob("bob", 145);
-		Bureaucrat jud("jud", 137);
-		ShrubberyCreationForm a1("a1");
+		Bureaucrat bob("bob", 5);
+		std::cout<<bob;
+		ShrubberyCreationForm a1("home");
+		std::cout<<a1;
 
 		bob.signForm(a1);
-		a1.execute("home", jud);
+		bob.executeForm(a1);
 	}
 	catch(std::exception &e){
 		std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
 	}
 
-	// ShrubberyCreationForm a2(a1);
-	// std::cout<<a1;
-	// bob.signForm(a1);
-	// std::cout<<a1;
+	std::cout<<COLOR_MAGENTA<<"\n===2st case===\n\n"<<COLOR_DEFAULT;
+	try{
+		Bureaucrat bob("bob", 5);
+		std::cout<<bob;
+		RobotomyRequestForm a1("humanoid");
+		std::cout<<a1;
 
-	// ShrubberyCreationForm a3(a1);
-	// std::cout<<a2;
-	// std::cout<<a3;
-	// std::cout<<std::endl;
+		bob.signForm(a1);
+		bob.executeForm(a1);
+	}
+	catch(std::exception &e){
+		std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
+	}
 
-		// {
-	// 	std::cout<<"===Contrucroes testing===\n\n";
+	std::cout<<COLOR_MAGENTA<<"\n===3st case===\n\n"<<COLOR_DEFAULT;
+	try{
+		Bureaucrat bob("bob", 5);
+		std::cout<<bob;
+		PresidentialPardonForm a1("Sponge Bob");
+		std::cout<<a1;
 
-	// 	std::cout<<COLOR_BLUE<<"Bureucraes:\n"<<COLOR_DEFAULT;
-	// 	Bureaucrat test("test", 100);
-	// 	Bureaucrat test2(test);
-	// 	Bureaucrat test3("test3");
-	// 	test3 = test2;
-	// 	std::cout<<test<<test2<<test3;
-	// 	std::cout<<COLOR_MAGENTA<<"\nForms:\n"<<COLOR_DEFAULT;
+		bob.signForm(a1);
+		bob.executeForm(a1);
+	}
+	catch(std::exception &e){
+		std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
+	}
 
-	// 	Form a1("a1", 10);
-	// 	Form a2(a1);
-	// 	//Form a3("a3");
-	// 	//a3 = a2;
-	// 	std::cout<<a1<<a2;
-	// }
-	// std::cout<<"\n=== End test ===\n\n";
+	std::cout<<COLOR_MAGENTA<<"\n===4st case===\n\n"<<COLOR_DEFAULT;
+	try{
+		Bureaucrat bob("bob", 6);
+		std::cout<<bob;
+		PresidentialPardonForm a1("Sponge Bob");
+		std::cout<<a1;
 
-	// try{
-	// 	Bureaucrat bob("bob", 120);
-	// 	Form a1("a1", 130);
-	// 	std::cout<<bob;
-	// 	std::cout<<a1;
-	// 	bob.signForm(a1);
-	// 	std::cout<<a1;
-	// }
-	// catch(std::exception &e){
-	// 	std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
-	// }
+		bob.signForm(a1);
+		bob.executeForm(a1);
+	}
+	catch(std::exception &e){
+		std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
+	}
 
-	// std::cout<<std::endl;
+	std::cout<<COLOR_MAGENTA<<"\n===5st case===\n\n"<<COLOR_DEFAULT;
+	try{
+		Bureaucrat bob("bob", 26);
+		std::cout<<bob;
+		PresidentialPardonForm a1("Sponge Bob");
+		std::cout<<a1;
 
-	// try{
-	// 	Bureaucrat bob("bob", 150);
-	// 	Form a1("a1", 130);
-	// 	std::cout<<bob;
-	// 	std::cout<<a1;
-	// 	bob.signForm(a1);
-	// 	std::cout<<a1;
-	// }
-	// catch(std::exception &e){
-	// 	std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
-	// }
+		bob.signForm(a1);
+		bob.executeForm(a1);
+	}
+	catch(std::exception &e){
+		std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
+	}
 
-	// std::cout<<std::endl;
+	std::cout<<COLOR_MAGENTA<<"\n===6st case===\n\n"<<COLOR_DEFAULT;
+	try{
+		Bureaucrat bob("bob", 25);
+		Bureaucrat zatrian("zatrian", 5);
+		std::cout<<bob;
+		PresidentialPardonForm a1("Sponge Bob");
+		std::cout<<a1;
 
-	// try{
-	// 	Bureaucrat bob("bob", 120);
-	// 	Form a1("a1", 130);
-	// 	std::cout<<bob;
-	// 	std::cout<<a1;
-	// 	bob.signForm(a1);
-	// 	bob.signForm(a1);
-	// 	std::cout<<a1;
-	// 	std::cout<<std::endl;
-	// }
-	// catch(std::exception &e){
-	// 	std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
-	// }
-
-	// std::cout<<std::endl;
-
-	// try{
-	// 	Form a1("a1", 0);
-	// }
-	// catch (std::exception &e){
-	// 	std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
-	// }
-
-	// std::cout<<std::endl;
-
-	// try{
-	// 	Form a1("a1", 151);
-	// }
-	// catch(std::exception &e) {
-	// 	std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
-	// }
-	// try{
-	// 	Form a2("a2", 160);
-	// }
-	// catch(std::exception &e){
-	// 	std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
-	// }
-	// try{
-	// 	Form a3("a3", 0);
-	// }
-	// catch(std::exception &e){
-	// 	std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
-	// }
-
-
-
-	// try{
-	// 	Bureaucrat bob("bob", 150);
-	// 	std::cout<<bob;
-	// 	bob.incrementGrade();
-	// 	std::cout<<bob;
-	// 	bob.decrementGrade();
-	// 	std::cout<<bob;
-	// 	bob.decrementGrade();
-	// }
-	// catch(std::exception & e){
-	// 	std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
-	// }
-	// try{
-	// 	Bureaucrat dylan("dylan", 1);
-	// 	std::cout<<dylan;
-	// 	dylan.decrementGrade();
-	// 	std::cout<<dylan;
-	// 	dylan.incrementGrade();
-	// 	std::cout<<dylan;
-	// 	dylan.incrementGrade();
-	// }
-	// catch(std::exception & e){
-	// 	std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
-	// }
-	// try{
-	// 	Bureaucrat henry("henry", 151);
-	// }
-	// catch(std::exception & e){
-	// 	std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
-	// }
-	// try{
-	// 	Bureaucrat garry("garry", 0);
-	// }
-	// catch(std::exception & e){
-	// 	std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
-	// }
-	// try{
-	// 	Bureaucrat franz("franz", -1);
-	// }
-	// catch(std::exception & e){
-	// 	std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
-	// }
+		bob.signForm(a1);
+		zatrian.executeForm(a1);
+	}
+	catch(std::exception &e){
+		std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
+	}
 
 	return (0);
 }

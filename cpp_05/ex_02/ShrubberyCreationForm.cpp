@@ -6,17 +6,18 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 13:33:57 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/17 15:19:19 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/07/19 12:19:03 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string name): Form::Form(name, 145, 137){
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target): Form::Form("ShrubberyCreationForm", 145, 137), target_(target){
+
 	std::cout<<"Shrubbery constructor\n";
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &a): Form::Form(a.getName(), a.getSGrade(), a.getEGrade()){
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &a): Form::Form(a.getName(), a.getSGrade(), a.getEGrade()), target_(a.target_){
 
 	set_if_signed(a.getIfSigned());
 	std::cout<<"Shrubbery copy\n";
@@ -38,11 +39,11 @@ void ShrubberyCreationForm::beSigned(const Bureaucrat &a){
 	Form::beSigned(a);
 }
 
-void ShrubberyCreationForm::execute(std::string target, const Bureaucrat &executor) const {
+void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
 
-	Form::execute(target, executor);
-	std::ofstream output(target + "_shrubbery");
+	Form::execute(executor);
 
+	std::ofstream output(target_ + "_shrubbery");
 	std::string shrub ="           {{ }{\n"
 "          {{}}}{{\n"
 "        {{}}{}}\n"

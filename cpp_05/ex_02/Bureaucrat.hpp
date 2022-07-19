@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 17:46:09 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/14 20:08:29 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/07/19 11:53:08 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ public:
 	Bureaucrat & operator =(const Bureaucrat & a);
 
 	void		signForm(Form &a);
+	void		executeForm(Form const & form);
 
 	std::string	getName() const;
 	int 		getGrade() const;

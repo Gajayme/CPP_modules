@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 18:26:31 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/17 15:03:07 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/07/19 12:12:51 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ public:
 	virtual ~Form();
 
 	virtual void beSigned(const Bureaucrat &a) = 0;
-	virtual void execute(std::string target, Bureaucrat const & executor) const = 0;
+	virtual void execute(Bureaucrat const & executor) const = 0;
 
 	//GETTERS
 	std::string	getName() const;

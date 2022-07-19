@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 13:33:54 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/19 12:19:07 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/07/19 12:21:29 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATIONFORM_HPP
-#define SHRUBBERYCREATIONFORM_HPP
+#ifndef PRESIDENTALPARDONFORM_HPP
+#define PRESIDENTALPARDONFORM_HPP
 
 #include "Form.hpp"
 #include <string>
@@ -25,17 +25,17 @@
 # define COLOR_MAGENTA "\033[35m"
 # define COLOR_YELLOW "\033[33m"
 
-class ShrubberyCreationForm: public Form
+class PresidentialPardonForm: public Form
 {
 private:
 
 	std::string target_;
-	ShrubberyCreationForm & operator =(const ShrubberyCreationForm &a);
+	PresidentialPardonForm & operator =(const PresidentialPardonForm &a);
 
 public:
-	ShrubberyCreationForm(std::string target);
-	ShrubberyCreationForm(const ShrubberyCreationForm &a);
-	~ShrubberyCreationForm();
+	PresidentialPardonForm(std::string target);
+	PresidentialPardonForm(const PresidentialPardonForm &a);
+	~PresidentialPardonForm();
 
 	virtual void beSigned(const Bureaucrat &a);
 	virtual void execute(Bureaucrat const & executor) const;

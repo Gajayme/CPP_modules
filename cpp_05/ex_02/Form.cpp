@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 18:30:44 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/17 15:02:43 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/07/19 12:13:01 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,7 @@ void Form::beSigned(const Bureaucrat &a){
 	std::cout<<COLOR_GREEN<<a.getName()<<" signed "<<name_<<::std::endl<<COLOR_DEFAULT;
 }
 
-void Form::execute(std::string target, const Bureaucrat &a) const{
-
-	(void) target;
+void Form::execute(const Bureaucrat &a) const{
 
 	if (a.getGrade() > exec_grade_){
 		std::cout<<COLOR_YELLOW<<a.getName()<<" couldn’t exec "<<name_<<" because his grade is low\n"<<COLOR_DEFAULT;

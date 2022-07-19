@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 17:51:12 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/17 13:24:37 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/07/19 12:06:25 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,11 @@ Bureaucrat::~Bureaucrat(){
 void Bureaucrat::signForm(Form &a){
 
 	a.beSigned(*this);
-	//if (a.getReqGrade() < grade_)
-		//std::cout<<COLOR_RED<<name_<<" couldn’t sign "<<a.getName()<<" because his grade is low\n"<<COLOR_DEFAULT;
+}
 
-	//else if (a.getIfSigned())
-	//	std::cout<<COLOR_RED<<name_<<" couldn’t sign "<<a.getName()<<" because it is already signed\n"<<COLOR_DEFAULT;
+void Bureaucrat::executeForm(const Form &a){
 
-	//else
-		//std::cout<<COLOR_GREEN<<name_<<" signed "<<a.getName()<<::std::endl<<COLOR_DEFAULT;
-	//std::cout<<COLOR_GREEN<<name_<<" signed "<<a.getName()<<std::endl<<COLOR_DEFAULT;
-
+	a.execute(*this);
 }
 
 //GETTERS
