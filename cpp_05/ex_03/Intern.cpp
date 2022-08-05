@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gajayme <gajayme@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:00:02 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/22 18:27:19 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/08/05 22:19:25 by gajayme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ const char * Intern::InvalidFormName::what() const throw(){
 
 Form * Intern::makeForm(const std::string &form_name, const std::string &target){
 
-	Form *tmp = nullptr;
+	Form *tmp = NULL;
 	//typedef Form *(*func)(std::string const & target);
 
 	struct Form_types {

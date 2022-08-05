@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gajayme <gajayme@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 13:33:57 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/19 12:19:03 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/08/05 21:58:45 by gajayme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
 
 	Form::execute(executor);
 
-	std::ofstream output(target_ + "_shrubbery");
+	std::string filename = target_ + "_shrubbery";
+
+	std::ofstream output(filename.data());
 	std::string shrub ="           {{ }{\n"
 "          {{}}}{{\n"
 "        {{}}{}}\n"

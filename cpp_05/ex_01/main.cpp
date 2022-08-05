@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gajayme <gajayme@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 17:46:06 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/16 23:42:55 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/08/05 21:47:33 by gajayme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,20 @@ int main(void){
 	catch(std::exception &e){
 		std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
 	}
+
+		try{
+		std::cout<<std::endl;
+		Bureaucrat bob("bob", 120);
+		Form a1("a1", 130);
+		std::cout<<bob;
+		std::cout<<a1;
+		a1.beSigned(bob);
+		std::cout<<a1;
+	}
+	catch(std::exception &e){
+		std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
+	}
+
 
 	std::cout<<std::endl;
 
@@ -94,8 +108,11 @@ int main(void){
 	catch(std::exception &e) {
 		std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
 	}
+
+
+
 	// try{
-	// 	Form a2("a2", 160);
+	// 	Form a2("a2", 100);
 	// }
 	// catch(std::exception &e){
 	// 	std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;

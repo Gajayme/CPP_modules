@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gajayme <gajayme@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 18:30:44 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/19 12:13:01 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/08/05 22:04:22 by gajayme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void Form::execute(const Bureaucrat &a) const{
 		throw GradeTooLowException();
 	}
 	else if (!if_signed_){
-			std::cout<<COLOR_YELLOW<<a.getName()<<" couldn’t sign "<<name_<<" because its unsigned\n"<<COLOR_DEFAULT;
+			std::cout<<COLOR_YELLOW<<a.getName()<<" couldn’t exec "<<name_<<" because its unsigned\n"<<COLOR_DEFAULT;
 		throw FormUnsignedException();
 	}
 	std::cout<<COLOR_GREEN<<a.getName()<<" exec "<<name_<<::std::endl<<COLOR_DEFAULT;

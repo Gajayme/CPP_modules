@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gajayme <gajayme@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 13:33:54 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/19 12:18:56 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/08/05 22:19:45 by gajayme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
 
 # define COLOR_DEFAULT "\033[0m"
 # define COLOR_RED "\033[31m"

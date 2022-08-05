@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gajayme <gajayme@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 17:46:06 by lyubov            #+#    #+#             */
-/*   Updated: 2022/07/16 23:11:57 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/08/05 21:34:39 by gajayme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main(void){
 	Bureaucrat test("test", 100);
 	Bureaucrat test2(test);
 	Bureaucrat test3("test3");
-	test3 = test2;
+	std::cout<<test3.getName()<<std::endl;
 	std::cout<<test<<test2<<test3;
 }
 	std::cout<<"\n=== End test ===\n\n";
@@ -28,11 +28,14 @@ int main(void){
 	try{
 		Bureaucrat bob("bob", 150);
 		std::cout<<bob;
+
+		std::cout<<bob.getName()<<" "<<bob.getGrade()<<std::endl;
 		bob.incrementGrade();
 		std::cout<<bob;
 		bob.decrementGrade();
 		std::cout<<bob;
 		bob.decrementGrade();
+
 	}
 	catch(std::exception & e){
 		std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
