@@ -18,7 +18,7 @@ $(NAME):	$(OBJS) $(INC) Makefile
 			$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-			$(RM) $(OBJS) *_shrubbery
+			$(RM) $(OBJS)
 
 fclean:		clean
 			$(RM) $(NAME)

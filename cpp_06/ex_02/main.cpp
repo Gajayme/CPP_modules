@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 13:18:41 by lyubov            #+#    #+#             */
-/*   Updated: 2022/08/05 14:06:17 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/08/05 14:11:39 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ int main(void){
 
 	Base *ptr = generate();
 	identify (ptr);
+
+	delete ptr;
 
 	return (0);
 }

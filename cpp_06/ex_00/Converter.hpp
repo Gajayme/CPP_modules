@@ -6,12 +6,12 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 11:53:32 by lyubov            #+#    #+#             */
-/*   Updated: 2022/08/05 11:25:38 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/08/05 14:10:30 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONVERTER.HPP
-# define CONVERTER.HPP
+#ifndef CONVERTER_HPP
+# define CONVERTER_HPP
 
 #include <iostream>
 #include <string>
