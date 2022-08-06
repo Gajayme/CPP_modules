@@ -6,15 +6,15 @@
 /*   By: gajayme <gajayme@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 17:51:12 by lyubov            #+#    #+#             */
-/*   Updated: 2022/08/06 14:17:59 by gajayme          ###   ########.fr       */
+/*   Updated: 2022/08/06 14:18:10 by gajayme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include "iter.hpp"
 
 Bureaucrat::Bureaucrat(std::string name, int grade): name_(name){
 
-	std::cout<<"Bureaucrat constructor called\n";
+	//std::cout<<"Bureaucrat constructor called\n";
 	if (grade > 150)
 		throw GradeTooLowException();
 	else if (grade < 1)
@@ -23,12 +23,12 @@ Bureaucrat::Bureaucrat(std::string name, int grade): name_(name){
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat & a): name_(a.getName()), grade_(a.getGrade()){
-	std::cout<<"Bureaucrat copy called\n";
+	//std::cout<<"Bureaucrat copy called\n";
 
 }
 
 Bureaucrat & Bureaucrat::operator=(const Bureaucrat & a){
-	std::cout<<"Bureaucrat assignment called\n";
+	//std::cout<<"Bureaucrat assignment called\n";
 	if (this != &a){
 		grade_ = a.getGrade();
 	}
@@ -36,7 +36,7 @@ Bureaucrat & Bureaucrat::operator=(const Bureaucrat & a){
 }
 
 Bureaucrat::~Bureaucrat(){
-	std::cout<<"Bureaucrat destructor called\n";
+	//std::cout<<"Bureaucrat destructor called\n";
 
 }
 
