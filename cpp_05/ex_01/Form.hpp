@@ -6,7 +6,7 @@
 /*   By: gajayme <gajayme@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 18:26:31 by lyubov            #+#    #+#             */
-/*   Updated: 2022/08/05 21:39:44 by gajayme          ###   ########.fr       */
+/*   Updated: 2022/08/07 12:26:39 by gajayme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ public:
 	Form(const Form &a);
 	virtual ~Form();
 
-	virtual void beSigned(const Bureaucrat &a);
+	void beSigned(const Bureaucrat &a);
 
 	//GETTERS
 	std::string	getName() const;

@@ -6,7 +6,7 @@
 /*   By: gajayme <gajayme@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 17:46:06 by lyubov            #+#    #+#             */
-/*   Updated: 2022/08/05 21:47:33 by gajayme          ###   ########.fr       */
+/*   Updated: 2022/08/07 12:26:04 by gajayme          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int main(void){
 	}
 	std::cout<<"\n=== End test ===\n\n";
 
+	//case 1
 	try{
 		Bureaucrat bob("bob", 120);
 		Form a1("a1", 130);
@@ -46,23 +47,9 @@ int main(void){
 	catch(std::exception &e){
 		std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
 	}
-
-		try{
-		std::cout<<std::endl;
-		Bureaucrat bob("bob", 120);
-		Form a1("a1", 130);
-		std::cout<<bob;
-		std::cout<<a1;
-		a1.beSigned(bob);
-		std::cout<<a1;
-	}
-	catch(std::exception &e){
-		std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
-	}
-
-
 	std::cout<<std::endl;
 
+	//case 2
 	try{
 		Bureaucrat bob("bob", 150);
 		Form a1("a1", 130);
@@ -74,9 +61,9 @@ int main(void){
 	catch(std::exception &e){
 		std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
 	}
-
 	std::cout<<std::endl;
 
+	//case 3
 	try{
 		Bureaucrat bob("bob", 120);
 		Form a1("a1", 130);
@@ -90,84 +77,26 @@ int main(void){
 	catch(std::exception &e){
 		std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
 	}
-
 	std::cout<<std::endl;
 
+	//case 4
 	try{
 		Form a1("a1", 0);
 	}
 	catch (std::exception &e){
 		std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
 	}
-
 	std::cout<<std::endl;
 
+	//case 5
 	try{
 		Form a1("a1", 151);
 	}
+
+	//case 6
 	catch(std::exception &e) {
 		std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
 	}
-
-
-
-	// try{
-	// 	Form a2("a2", 100);
-	// }
-	// catch(std::exception &e){
-	// 	std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
-	// }
-	// try{
-	// 	Form a3("a3", 0);
-	// }
-	// catch(std::exception &e){
-	// 	std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
-	// }
-
-
-
-	// try{
-	// 	Bureaucrat bob("bob", 150);
-	// 	std::cout<<bob;
-	// 	bob.incrementGrade();
-	// 	std::cout<<bob;
-	// 	bob.decrementGrade();
-	// 	std::cout<<bob;
-	// 	bob.decrementGrade();
-	// }
-	// catch(std::exception & e){
-	// 	std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
-	// }
-	// try{
-	// 	Bureaucrat dylan("dylan", 1);
-	// 	std::cout<<dylan;
-	// 	dylan.decrementGrade();
-	// 	std::cout<<dylan;
-	// 	dylan.incrementGrade();
-	// 	std::cout<<dylan;
-	// 	dylan.incrementGrade();
-	// }
-	// catch(std::exception & e){
-	// 	std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
-	// }
-	// try{
-	// 	Bureaucrat henry("henry", 151);
-	// }
-	// catch(std::exception & e){
-	// 	std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
-	// }
-	// try{
-	// 	Bureaucrat garry("garry", 0);
-	// }
-	// catch(std::exception & e){
-	// 	std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
-	// }
-	// try{
-	// 	Bureaucrat franz("franz", -1);
-	// }
-	// catch(std::exception & e){
-	// 	std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
-	// }
 
 	return (0);
 }
