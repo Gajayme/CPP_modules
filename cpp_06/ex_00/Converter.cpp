@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 11:57:13 by lyubov            #+#    #+#             */
-/*   Updated: 2022/08/04 16:56:11 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/08/08 14:43:00 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 Converter::Converter(std::string orig_str): orig_str_(orig_str)
 {
 	prec_ = 0;
+	spec_d_ = false;
 	is_pos_ = true;
 	Convert();
 }
@@ -23,6 +24,7 @@ Converter::Converter(const Converter & other){
 
 	orig_str_ = other.orig_str_;
 	prec_ = other.prec_;
+	spec_d_ = other.spec_d_;
 	c_ = other.c_;
 	i_ = other.i_;
 	d_ = other.d_;
@@ -38,6 +40,7 @@ Converter & Converter::operator=(const Converter & other){
 
 	if (this != &other){
 		orig_str_ = other.orig_str_;
+		spec_d_ = other.spec_d_;
 		prec_ = other.prec_;
 		c_ = other.c_;
 		i_ = other.i_;
@@ -59,12 +62,10 @@ std::ostream& operator<<(std::ostream &out, const Converter &a){
 	else
 		out<<"char:   impossible\nint:    impossible";
 
-	if (!a.is_pos_)
-	 	out<<"\ndouble: impossible\nfloat:  impossible\n";
-	else{
 	out<<"\ndouble: "<<std::fixed<<std::setprecision(a.prec_)<<a.d_;
+	if (!a.prec_ && !a.spec_d_)
+		std::cout<<".0";
 	out<<"\nfloat:  "<<a.f_<<"f\n"<<std::scientific;
-	}
 	return (out);
 }
 
@@ -75,9 +76,13 @@ int Converter::FindOrigType(){
 		return CHAR_VAL;
 	}
 	if (orig_str_ == "-inff" || orig_str_ == "+inff" || orig_str_ == "inff" || orig_str_ == "nanf"){
+		spec_d_ = true;
 		return FLOAT_VAL;
+
 	}
+
 	if (orig_str_ == "-inf" || orig_str_ == "+inf" || orig_str_ == "inf" || orig_str_ == "nan"){
+		spec_d_ = true;
 		return DOUBLE_VAL;
 	}
 
@@ -115,17 +120,25 @@ void Converter::Convert(){
 	case INT_VAL:
 		//std::cout<<"int detected\n\n";
 		i_= atol(orig_str_.data());
-		if (i_< INT_MIN || i_> INT_MAX){
-			is_pos_ = false;
-		}
+		if (i_< INT_MIN || i_> INT_MAX)
+			throw(std::overflow_error("Int overflow"));
 		c_ = static_cast<char>(i_);
 		d_ = static_cast<double>(i_);
-		f_ = static_cast<float>(i_);
+		f_ = stof(orig_str_);
+		//f_ = static_cast<float>(i_);
 		break;
 
 	case DOUBLE_VAL:
 		//std::cout<<"double detected\n\n";
-		d_ = std::stod(orig_str_);
+		try{
+			d_ = stod(orig_str_);
+		}
+		catch(std::exception &e){
+			throw(std::overflow_error("Double overflow"));
+		}
+		if ((d_ > INT_MAX || d_ <INT_MIN) && !spec_d_){
+			is_pos_ = false;
+		}
 		c_ = static_cast<char>(d_);
 		i_ = static_cast<long>(d_);
 		f_ = static_cast<float>(d_);
@@ -134,7 +147,15 @@ void Converter::Convert(){
 	case FLOAT_VAL:
 		prec_ -= 1;
 		//std::cout<<"float detected\n\n";
-		f_ = std::stof(orig_str_);
+		try{
+			f_ = std::stof(orig_str_);
+		}
+		catch(std::exception &e){
+			throw(std::overflow_error("Float overflow"));
+		}
+		if ((f_ > INT_MAX || f_ <INT_MIN) && !spec_d_){
+			is_pos_ = false;
+		}
 		c_ = static_cast<char>(f_);
 		i_ = static_cast<long>(f_);
 		d_ = static_cast<double>(f_);

@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 11:53:32 by lyubov            #+#    #+#             */
-/*   Updated: 2022/08/05 14:10:30 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/08/08 14:38:20 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <string>
 #include <iomanip>
 #include <climits>
+#include <limits>
 #include <cmath>
 
 # define COLOR_DEFAULT "\033[0m"
@@ -41,7 +42,10 @@ class Converter
 private:
 	std::string orig_str_;
 	int		prec_;
+	int		spec_d_;
 	bool	is_pos_;
+
+
 	char	c_;
 	long	i_;
 	float	f_;
