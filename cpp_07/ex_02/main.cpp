@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 20:07:06 by gajayme           #+#    #+#             */
-/*   Updated: 2022/08/10 20:13:36 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/08/10 20:21:44 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int main(void){
 		std::cout<<a3[10].get_dollars()<<std::endl;
 	}
 	catch(std::exception &e){
-		std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
+		std::cerr<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
 	}
 
 	return (0);
