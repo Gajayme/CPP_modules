@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gajayme <gajayme@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 20:07:06 by gajayme           #+#    #+#             */
-/*   Updated: 2022/08/06 20:40:29 by gajayme          ###   ########.fr       */
+/*   Updated: 2022/08/10 20:13:36 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,14 @@ int main(void){
 
 	Array<Dollars> a3(5);
 
-	std::cout<<a3[1].get_dollars();
+	std::cout<<"Valid: "<<a3[1].get_dollars()<<std::endl;
+
+	try{
+		std::cout<<a3[10].get_dollars()<<std::endl;
+	}
+	catch(std::exception &e){
+		std::cout<<COLOR_RED<<e.what()<<std::endl<<COLOR_DEFAULT;
+	}
 
 	return (0);
 }

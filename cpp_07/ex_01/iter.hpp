@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gajayme <gajayme@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 13:24:51 by gajayme           #+#    #+#             */
-/*   Updated: 2022/08/06 20:02:52 by gajayme          ###   ########.fr       */
+/*   Updated: 2022/08/10 19:38:09 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void iter(T *adress, size_t len, void (* func)(const T &)){
 	}
 }
 
+// BUREAUCRAT FOR TESTS
 
 class Bureaucrat{
 
@@ -73,5 +74,23 @@ public:
 };
 
 std::ostream & operator <<(std::ostream &out, const Bureaucrat &a);
+
+
+class Awesome
+ {
+	public:
+	Awesome( void ) : _n( 42 ) { return; }
+	int get( void ) const { return this->_n; }
+	private:
+	int _n;
+	};
+
+std::ostream & operator<<( std::ostream & o, Awesome const & rhs ) { o << rhs.get(); return o; }
+
+template< typename T >
+void print( T const & x ){
+	std::cout << x << std::endl; return;}
+
+
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gajayme <gajayme@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 13:13:38 by gajayme           #+#    #+#             */
-/*   Updated: 2022/08/06 20:02:57 by gajayme          ###   ########.fr       */
+/*   Updated: 2022/08/10 19:33:09 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void swap(T &a, T &b){
 
 template <typename T>
 T &min(T &a, T &b){
-	return (a > b) ? b : a;
+	return (b > a) ? a : b;
 }
 
 template <typename T>

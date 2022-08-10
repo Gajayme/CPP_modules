@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gajayme <gajayme@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 18:28:47 by gajayme           #+#    #+#             */
-/*   Updated: 2022/08/06 20:44:22 by gajayme          ###   ########.fr       */
+/*   Updated: 2022/08/10 19:52:03 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ private:
 
 	T		*arr_;
 	size_t	size_;
+	std::string err_;
 
 public:
 
@@ -36,13 +37,14 @@ public:
 
 	Array(){
 		arr_ = NULL;
+		err_ = "Index is out of bound";
 	}
 
 	Array(size_t n){
 
 		size_ = n;
 		arr_ = new T [n];
-
+		err_ = "Index is out of bound";
 	}
 	Array(const Array &other){
 		size_ = other.size_;
@@ -55,6 +57,13 @@ public:
 	~Array(){
 		delete [] arr_;
 	}
+
+//=====EXCEPTIONS=====
+	class OutOfBoundsException: public std::exception {
+		virtual const char* what() const throw(){
+			return "ArrayException: index out of bounds";
+		}
+	};
 
 //=====OPERATORS=====
 
@@ -73,13 +82,13 @@ public:
 
 	T& operator[](size_t index){
 		if (index < 0 || index > size_)
-			throw (std::overflow_error("Index is out of bound"));
+			throw OutOfBoundsException();
 		return (arr_[index]);
 	}
 
 	const T& operator[](size_t index) const {
 		if (index < 0 || index > size_)
-			throw (std::overflow_error());
+			throw OutOfBoundsException();
 		return (arr_[index]);
 	}
 
