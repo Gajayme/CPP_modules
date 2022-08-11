@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 18:28:47 by gajayme           #+#    #+#             */
-/*   Updated: 2022/08/10 19:52:03 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/08/11 21:11:36 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,12 @@ public:
 
 	Array(){
 		arr_ = NULL;
-		err_ = "Index is out of bound";
 	}
 
 	Array(size_t n){
 
 		size_ = n;
 		arr_ = new T [n];
-		err_ = "Index is out of bound";
 	}
 	Array(const Array &other){
 		size_ = other.size_;
