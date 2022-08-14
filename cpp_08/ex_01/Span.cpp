@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 21:58:11 by lyubov            #+#    #+#             */
-/*   Updated: 2022/08/13 10:02:52 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/08/14 14:37:01 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,15 @@ void Span::addNumber(int num){
 	if (vec_.size() < maxVecSize_){
 		vec_.push_back(num);
 		realVecSize_ += 1;
-		//std::cout<<COLOR_GREEN<<"ADDED\n"<<COLOR_BLUE;
+	}
+	else
+		throw MaximumElements();
+}
+
+void Span::addNumber(std::vector<int>::iterator it, std::vector<int>::iterator ite){
+	if (static_cast<size_t>(ite - it) <= maxVecSize_ - realVecSize_){
+		std::copy(it, ite,  std::back_inserter(vec_));
+		realVecSize_ = vec_.size();
 	}
 	else
 		throw MaximumElements();

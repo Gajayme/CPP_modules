@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 21:54:09 by lyubov            #+#    #+#             */
-/*   Updated: 2022/08/13 09:42:20 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/08/14 13:51:14 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ public:
 //=====METHODS=====
 
 	void addNumber(int num);
+	void addNumber(std::vector<int>::iterator it, std::vector<int>::iterator ite);
 	int shortestSpan();
 	int longestSpan();
 	size_t getMaxSize() const;

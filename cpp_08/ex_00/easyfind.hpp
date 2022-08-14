@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gajayme <gajayme@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 11:55:32 by gajayme           #+#    #+#             */
-/*   Updated: 2022/08/08 13:40:38 by gajayme          ###   ########.fr       */
+/*   Updated: 2022/08/14 11:04:52 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,11 @@
 # define COLOR_YELLOW "\033[33m"
 
 template <typename T>
-int & easyfind(T &konteyner, int num){
+typename T::iterator easyfind(T &konteyner, int val_to_find){
 
-	if (std::find(konteyner.begin(), konteyner.end(), num) != konteyner.end())
-		return (*(std::find(konteyner.begin(), konteyner.end(), num)));
+	typename T::iterator iter = std::find(konteyner.begin(), konteyner.end(), val_to_find);
+	if (iter != konteyner.end())
+		return (iter);
 	else
 		throw (std::overflow_error("Not found"));
 }
