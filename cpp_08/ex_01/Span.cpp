@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 21:58:11 by lyubov            #+#    #+#             */
-/*   Updated: 2022/08/14 14:37:01 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/08/15 22:43:03 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int Span::shortestSpan(){
 	}
 	std::sort(vec_.begin(), vec_.end());
 	int shortest = vec_[1] - vec_[0];
+
 	for(size_t i = 1; i != realVecSize_; ++i){
 		if ((vec_[i] - vec_[i - 1]) < shortest){
 			shortest = vec_[i] - vec_[i - 1];

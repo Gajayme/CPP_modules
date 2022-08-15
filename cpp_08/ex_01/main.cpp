@@ -6,7 +6,7 @@
 /*   By: lyubov <lyubov@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 00:05:56 by lyubov            #+#    #+#             */
-/*   Updated: 2022/08/14 15:03:25 by lyubov           ###   ########.fr       */
+/*   Updated: 2022/08/15 22:42:50 by lyubov           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void simpleTests(){
 	Span s1(4);
 	try{
 		s1.addNumber(1);
-		s1.addNumber(2);
+		s1.addNumber(-2);
 		s1.addNumber(1000);
-		s1.addNumber(1000);
+		s1.addNumber(1050);
 		s1.addNumber(1000);
 	}
 	catch (std::exception &e){
