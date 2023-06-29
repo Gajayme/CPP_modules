@@ -1,27 +1,44 @@
 #include <iostream>
-#include <list>
+#include <vector>
+#include <deque>
 #include <string>
+#include <algorithm>
 
-typedef std::list<size_t> List;
+typedef std::vector<size_t> Vector;
+typedef std::deque<size_t> Deque;
 
-bool readData(List &listToReadTo, char* data[], int dataLength) {
-
-	char *avalibleSdata = "0123456789";
-
+template <typename T>
+bool readData(T &containerToFill, const size_t dataLength, const char * const data[]) {
+ 	const std::string avalibleData = "0123456789";
 	for (size_t i = 1; i < dataLength; ++i) {
-		while 
+		const std::string str(data[i]);
+		if (str.find_first_not_of(avalibleData) != std::string::npos) {
+			return false;
+		}
+		size_t num = std::stoi(str);
+		if (std::find(containerToFill.begin(), containerToFill.end(), num) != containerToFill.end()) {
+			return false;
+		}
+		containerToFill.push_back(num);
 	}
+	return true;
 }
 
-int main(int argc, char *argv[]) {
+void exitWithError() {
+	std::cout << "Error" << std::endl;
+	exit(1);
+}
+
+int main(const int argc, const char * const argv[]) {
 
 	if (argc < 2) {
-		return 0;
+		exitWithError();
 	}
 
-	std::list<size_t> listToSort;
-
-
+	Vector vec;
+	if (!readData(vec, argc, argv)) {
+		exitWithError();
+	}
 
 	return 0;
 }
