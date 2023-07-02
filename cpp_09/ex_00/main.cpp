@@ -17,5 +17,7 @@ int main(const int argc, const char * const argv[]) {
 
 	BitcoinExchange bExch;
 
+	bExch.processInput(std::string(argv[1]));
+
 	return 0;
 }
