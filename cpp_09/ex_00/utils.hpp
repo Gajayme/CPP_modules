@@ -15,6 +15,10 @@ namespace utils {
 
 	bool checkDate(const std::string &dateString);
 
+	bool checkLowerBorder(const double value);
+
+	bool checkUpperBorder(const double value);
+
 } // utils
 
 #endif

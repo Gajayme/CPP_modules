@@ -9,8 +9,15 @@ const int MAX_VALID_YR = 9999;
 //TODO эту дану наверное стоит взять из базы данных
 const int MIN_VALID_YR = 2009;
 const char delimeter = '-';
-
+const double upperBorder = 1000.0;
+const double lowerBorder = 0.0;
 const std::string WHITESPACE = " \n\r\t\f\v";
+
+
+void exitWithError(const std::string &errString) {
+	std::cout << errString << std::endl;
+	exit(1);
+}
 
 std::string ltrim(const std::string &s) {
 	size_t start = s.find_first_not_of(WHITESPACE);
@@ -24,11 +31,6 @@ std::string rtrim(const std::string &s) {
 
 std::string trim(const std::string &s) {
 	return rtrim(ltrim(s));
-}
-
-void exitWithError(const std::string &errString) {
-	std::cout << errString << std::endl;
-	exit(1);
 }
 
 bool isLeap(const size_t year) {
@@ -59,7 +61,6 @@ bool checkDayMonthYear(const size_t d, const size_t m, const size_t y) {
 	return true;
 }
 
-
 bool checkDate(const std::string &dateString) {
 	const size_t dateLength = 10;
 	if (dateString.length() != dateLength) {
@@ -84,7 +85,15 @@ bool checkDate(const std::string &dateString) {
 	const size_t day = std::stoi(dateString.substr(secondDelimPos + 1, 2));
 
 	return checkDayMonthYear(day, month, year);
-
 }
+
+bool checkLowerBorder(const double value) {
+	return value >= lowerBorder;
+}
+
+bool checkUpperBorder(const double value) {
+	return value <= upperBorder;
+}
+
 
 } // utils

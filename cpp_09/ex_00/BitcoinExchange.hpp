@@ -25,9 +25,11 @@ class BitcoinExchange {
 
 	private:
 
-		void ReadDB();
+		void readDB();
 
-		std::map<std::string, size_t> dataBase_;
+		void processLine(const std::string &line);
+
+		std::map<std::string, double> dataBase_;
 
 };
 
