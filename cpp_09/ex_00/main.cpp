@@ -1,23 +1,12 @@
-#include <iostream>
-#include <string>
-#include <map>
-
 #include "utils.hpp"
 #include "BitcoinExchange.hpp"
 
-
 int main(const int argc, const char * const argv[]) {
-
 	if (argc != 2) {
 		utils::exitWithError("Invalid arguments amount");
 	}
-	//todo Remove
-	(void)argc;
-	(void)argv;
 
-	BitcoinExchange bExch;
-
-	bExch.processInput(std::string(argv[1]));
-
+	BitcoinExchange bitcoinExchange;
+	bitcoinExchange.processInput(std::string(argv[1]));
 	return 0;
 }

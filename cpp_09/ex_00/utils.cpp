@@ -3,16 +3,16 @@
 #include <iostream>
 #include <algorithm>
 
+namespace {
+
+	const int MAX_VALID_YR = 9999;
+	const char delimeter = '-';
+	const double upperBorder = 1000.0;
+	const double lowerBorder = 0.0;
+	const std::string WHITESPACE = " \n\r\t\f\v";
+}
+
 namespace utils {
-
-const int MAX_VALID_YR = 9999;
-//TODO эту дану наверное стоит взять из базы данных
-const int MIN_VALID_YR = 2009;
-const char delimeter = '-';
-const double upperBorder = 1000.0;
-const double lowerBorder = 0.0;
-const std::string WHITESPACE = " \n\r\t\f\v";
-
 
 void exitWithError(const std::string &errString) {
 	std::cout << errString << std::endl;
@@ -38,7 +38,7 @@ bool isLeap(const size_t year) {
 }
 
 bool checkDayMonthYear(const size_t d, const size_t m, const size_t y) {
-	if ((y > MAX_VALID_YR) || (y < MIN_VALID_YR)) {
+	if (y > MAX_VALID_YR) {
 		return false;
 	} else if ((m < 1) || (m > 12)) {
 		return false;
@@ -61,15 +61,15 @@ bool checkDayMonthYear(const size_t d, const size_t m, const size_t y) {
 	return true;
 }
 
-bool checkDate(const std::string &dateString) {
+bool checkDate(const std::string &dateString, const std::string &minDate) {
 	const size_t dateLength = 10;
 	if (dateString.length() != dateLength) {
 		return false;
 	}
 
-	const std::string allDigits = "1234567890";
 	const size_t firstDelimPos = 4;
 	const size_t secondDelimPos = 7;
+	const std::string allDigits = "0123456789";
 
 	for (size_t i = 0; i < dateLength; ++i) {
 		const bool isDelim = ((i == firstDelimPos) || (i == secondDelimPos));
@@ -84,7 +84,17 @@ bool checkDate(const std::string &dateString) {
 	const size_t month = std::stoi(dateString.substr(firstDelimPos + 1, 2));
 	const size_t day = std::stoi(dateString.substr(secondDelimPos + 1, 2));
 
-	return checkDayMonthYear(day, month, year);
+	return checkDayMonthYear(day, month, year) && (dateString >= minDate);
+}
+
+bool checkPrice(const std::string &priceString) {
+	const std::string allDigits = "-+.0123456789";
+	for (size_t i = 0; i < priceString.length(); ++i) {
+		if (allDigits.find(priceString[i]) == std::string::npos) {
+			return false;
+		}
+	}
+	return true;
 }
 
 bool checkLowerBorder(const double value) {
@@ -94,6 +104,5 @@ bool checkLowerBorder(const double value) {
 bool checkUpperBorder(const double value) {
 	return value <= upperBorder;
 }
-
 
 } // utils

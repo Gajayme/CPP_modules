@@ -6,18 +6,22 @@
 
 namespace {
 
-	const char taskDbDelimeter = ',';
-	const char userBdDelimeter = '|';
-	const std::string lastString = "\n";
+	const std::string databasePath = "data.csv";
+	const char tastDatabaseDelimeter = ',';
+	const char userDatabaseDelimeter = '|';
 
-	void printParseError(const std::string errMsg) {
+	void printParseError(const std::string &errMsg) {
 		std::cout << "Error: " << errMsg << std::endl;
+	}
+
+	void printPrice(const std::string &date, const double amount, const double price) {
+		std::cout << date << " => " << amount << " = " << price << std::endl;
 	}
 
 } // namespace
 
 BitcoinExchange::BitcoinExchange() {
-	readDB();
+	readDatabase();
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &other):
@@ -34,58 +38,63 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other) {
 BitcoinExchange::~BitcoinExchange() {
 }
 
-void BitcoinExchange::processInput(const BitcoinExchange::Filename &filename) {
+void BitcoinExchange::processInput(const std::string &filename) {
 	std::ifstream inf(filename);
 	if (!inf) {
 		utils::exitWithError("Can't open db file");
 	}
 	std::string line;
-	//read header
 	std::getline(inf, line);
-	while(inf && (line.length() != 0)) {
+	while(inf) {
 		std::getline(inf, line);
-		processLine(line);
+		processUserDatabaseLine(line);
 	}
 }
 
-void BitcoinExchange::readDB() {
-	std::ifstream inf(data);
+void BitcoinExchange::readDatabase() {
+	std::ifstream inf(databasePath);
 	if (!inf) {
-		printParseError("could not open file.");
+		utils::exitWithError("Can't open database: " + databasePath);
 	}
 
 	std::string line;
-	// read header
 	std::getline(inf, line);
 	while(inf) {
-
 		std::getline(inf, line);
-		utils::trim(line);
-		if (line.length() == 0) {
-			return;
-		}
-		const size_t delimeterIdx = line.find(taskDbDelimeter);
-		const std::string datePart = utils::trim(line.substr(0, delimeterIdx));
-		const double pricePart = std::stod(line.substr(delimeterIdx + 1, line.length()));
-		dataBase_.insert(std::pair<std::string, double>(datePart, pricePart));
+		processTaskDatabaseLine(line);
 	}
 }
 
-void BitcoinExchange::processLine(const std::string &line) {
+void BitcoinExchange::processTaskDatabaseLine(const std::string &line) {
+	if (line.length() == 0) {
+		return;
+	}
+
+	const size_t delimeterIdx = line.find(tastDatabaseDelimeter);
+	const std::string datePart = utils::trim(line.substr(0, delimeterIdx));
+	const double pricePart = std::stod(line.substr(delimeterIdx + 1, line.length()));
+	dataBase_.insert(std::pair<std::string, double>(datePart, pricePart));
+}
+
+void BitcoinExchange::processUserDatabaseLine(const std::string &line) {
 	const std::string trimmedLine = utils::trim(line);
 	if (trimmedLine.length() == 0) {
 			return;
 	}
-
-	const size_t delimeterIdx = trimmedLine.find(userBdDelimeter);
+	const size_t delimeterIdx = trimmedLine.find(userDatabaseDelimeter);
 	const std::string datePart = utils::trim(trimmedLine.substr(0, delimeterIdx));
 
-	if (!utils::checkDate(datePart)) {
+	if (!utils::checkDate(datePart, dataBase_.begin()->first)) {
 		printParseError("bad input => " + datePart );
 		return;
 	}
 
-	const double amount = std::stod(trimmedLine.substr(delimeterIdx + 1, trimmedLine.length()));
+	const std::string pricePart = utils::trim(trimmedLine.substr(delimeterIdx + 1, trimmedLine.length()));
+	if (!utils::checkPrice(pricePart)) {
+		printParseError("not a number");
+		return;
+	}
+	const double amount = std::stod(pricePart);
 
 	if (!utils::checkLowerBorder(amount)){
 		printParseError("not a positive number.");
@@ -95,5 +104,20 @@ void BitcoinExchange::processLine(const std::string &line) {
 	if (!utils::checkUpperBorder(amount)){
 		printParseError("too large a number.");
 		return;
+	}
+
+	calculatePrice(datePart, amount);
+}
+
+void BitcoinExchange::calculatePrice(const std::string &date, const double amount) {
+	Database::const_iterator it = dataBase_.lower_bound(date);
+
+	while (true) {
+		if ((it->first) <= date) {
+			const double price = amount * (it->second);
+			printPrice(date, amount, price);
+			return;
+		}
+		--it;
 	}
 }

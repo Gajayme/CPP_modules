@@ -13,7 +13,9 @@ namespace utils {
 
 	void exitWithError(const std::string &errString);
 
-	bool checkDate(const std::string &dateString);
+	bool checkDate(const std::string &dateString, const std::string &minDate);
+
+	bool checkPrice(const std::string &priceString);
 
 	bool checkLowerBorder(const double value);
 

@@ -4,33 +4,31 @@
 #include <string>
 #include <map>
 
-namespace {
-
-	static const std::string data = "data.csv";
-
-} // namespace
-
-
 class BitcoinExchange {
 	public:
-
-		typedef std::string Filename;
-
 		BitcoinExchange();
+
 		BitcoinExchange(const BitcoinExchange &other);
+
 		BitcoinExchange &operator =(const BitcoinExchange &other);
+
 		~BitcoinExchange();
 
-		void processInput(const Filename &filename);
+		void processInput(const std::string &filename);
 
 	private:
 
-		void readDB();
+		typedef std::map<std::string, double> Database;
 
-		void processLine(const std::string &line);
+		Database dataBase_;
 
-		std::map<std::string, double> dataBase_;
+		void readDatabase();
 
+		void processTaskDatabaseLine(const std::string &line);
+
+		void processUserDatabaseLine(const std::string &line);
+
+		void calculatePrice(const std::string &date, const double amount);
 };
 
 #endif
