@@ -9,8 +9,6 @@ class BitcoinExchange {
 
 		static BitcoinExchange &getBitcoinExchange();
 
-		~BitcoinExchange();
-
 		void processInput(const std::string &filename);
 
 	private:
@@ -18,6 +16,8 @@ class BitcoinExchange {
 		typedef std::map<std::string, double> Database;
 
 		BitcoinExchange();
+
+		~BitcoinExchange();
 
 		BitcoinExchange(const BitcoinExchange &other);
 
