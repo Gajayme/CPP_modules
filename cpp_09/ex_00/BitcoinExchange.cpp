@@ -10,17 +10,10 @@ namespace {
 	const char tastDatabaseDelimeter = ',';
 	const char userDatabaseDelimeter = '|';
 
-	void printParseError(const std::string &errMsg) {
-		std::cout << "Error: " << errMsg << std::endl;
-	}
-
-	void printPrice(const std::string &date, const double amount, const double price) {
-		std::cout << date << " => " << amount << " = " << price << std::endl;
-	}
-
 } // namespace
 
 BitcoinExchange::BitcoinExchange() {
+	std::cout << " constructor called" << std::endl;
 	readDatabase();
 }
 
@@ -33,6 +26,12 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other) {
 		this->dataBase_ = other.dataBase_;
 	}
 	return *this;
+}
+
+
+BitcoinExchange &BitcoinExchange::getBitcoinExchange(){
+	static BitcoinExchange bitcoinExchange;
+	return bitcoinExchange;
 }
 
 BitcoinExchange::~BitcoinExchange() {
@@ -82,7 +81,7 @@ void BitcoinExchange::processTaskDatabaseLine(const std::string &line) {
 	dataBase_.insert(std::pair<std::string, double>(datePart, price));
 }
 
-void BitcoinExchange::processUserDatabaseLine(const std::string &line) {
+void BitcoinExchange::processUserDatabaseLine(const std::string &line) const{
 	const std::string trimmedLine = utils::trim(line);
 	if (trimmedLine.length() == 0) {
 			return;
@@ -97,12 +96,12 @@ void BitcoinExchange::processUserDatabaseLine(const std::string &line) {
 	const double amount = std::stod(pricePart);
 
 	if (!utils::checkLowerBorder(amount)){
-		printParseError("not a positive number.");
+		utils::printParseError("not a positive number.");
 		return;
 	}
 
 	if (!utils::checkUpperBorder(amount)){
-		printParseError("too large a number.");
+		utils::printParseError("too large a number.");
 		return;
 	}
 
@@ -111,24 +110,24 @@ void BitcoinExchange::processUserDatabaseLine(const std::string &line) {
 
 bool BitcoinExchange::validateInformation(const std::string &date, const std::string &price) const {
 	if (!utils::checkDate(date, dataBase_.begin()->first)) {
-		printParseError("bad input => " + date );
+		utils::printParseError("bad input => " + date );
 		return false;
 	}
 
 	if (!utils::checkPrice(price)) {
-		printParseError("not a number");
+		utils::printParseError("not a number");
 		return false;
 	}
 	return true;
 }
 
-void BitcoinExchange::calculatePrice(const std::string &date, const double amount) {
+void BitcoinExchange::calculatePrice(const std::string &date, const double amount) const {
 	Database::const_iterator it = dataBase_.lower_bound(date);
 
 	while (true) {
 		if ((it->first) <= date) {
 			const double price = amount * (it->second);
-			printPrice(date, amount, price);
+			utils::printPrice(date, amount, price);
 			return;
 		}
 		--it;

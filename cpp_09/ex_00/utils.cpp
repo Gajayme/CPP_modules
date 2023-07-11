@@ -19,6 +19,14 @@ void exitWithError(const std::string &errString) {
 	exit(1);
 }
 
+void printParseError(const std::string &errMsg) {
+		std::cout << "Error: " << errMsg << std::endl;
+}
+
+void printPrice(const std::string &date, const double amount, const double price) {
+	std::cout << date << " => " << amount << " = " << price << std::endl;
+}
+
 std::string ltrim(const std::string &s) {
 	size_t start = s.find_first_not_of(WHITESPACE);
 	return (start == std::string::npos) ? "" : s.substr(start);

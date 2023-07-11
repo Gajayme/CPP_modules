@@ -13,6 +13,10 @@ namespace utils {
 
 	void exitWithError(const std::string &errString);
 
+	void printParseError(const std::string &errMsg);
+
+	void printPrice(const std::string &date, const double amount, const double price);
+
 	bool checkDate(const std::string &dateString, const std::string &minDate);
 
 	bool checkPrice(const std::string &priceString);
