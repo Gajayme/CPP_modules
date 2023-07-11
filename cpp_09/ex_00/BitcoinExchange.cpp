@@ -72,8 +72,14 @@ void BitcoinExchange::processTaskDatabaseLine(const std::string &line) {
 
 	const size_t delimeterIdx = line.find(tastDatabaseDelimeter);
 	const std::string datePart = utils::trim(line.substr(0, delimeterIdx));
-	const double pricePart = std::stod(line.substr(delimeterIdx + 1, line.length()));
-	dataBase_.insert(std::pair<std::string, double>(datePart, pricePart));
+	const std::string pricePart = line.substr(delimeterIdx + 1, line.length());
+
+	if (!validateInformation(datePart, pricePart)) {
+		utils::exitWithError("Error in DB");
+	}
+
+	const double price = std::stod(pricePart);
+	dataBase_.insert(std::pair<std::string, double>(datePart, price));
 }
 
 void BitcoinExchange::processUserDatabaseLine(const std::string &line) {
@@ -83,15 +89,9 @@ void BitcoinExchange::processUserDatabaseLine(const std::string &line) {
 	}
 	const size_t delimeterIdx = trimmedLine.find(userDatabaseDelimeter);
 	const std::string datePart = utils::trim(trimmedLine.substr(0, delimeterIdx));
-
-	if (!utils::checkDate(datePart, dataBase_.begin()->first)) {
-		printParseError("bad input => " + datePart );
-		return;
-	}
-
 	const std::string pricePart = utils::trim(trimmedLine.substr(delimeterIdx + 1, trimmedLine.length()));
-	if (!utils::checkPrice(pricePart)) {
-		printParseError("not a number");
+
+	if (!validateInformation (datePart, pricePart)) {
 		return;
 	}
 	const double amount = std::stod(pricePart);
@@ -107,6 +107,19 @@ void BitcoinExchange::processUserDatabaseLine(const std::string &line) {
 	}
 
 	calculatePrice(datePart, amount);
+}
+
+bool BitcoinExchange::validateInformation(const std::string &date, const std::string &price) const {
+	if (!utils::checkDate(date, dataBase_.begin()->first)) {
+		printParseError("bad input => " + date );
+		return false;
+	}
+
+	if (!utils::checkPrice(price)) {
+		printParseError("not a number");
+		return false;
+	}
+	return true;
 }
 
 void BitcoinExchange::calculatePrice(const std::string &date, const double amount) {

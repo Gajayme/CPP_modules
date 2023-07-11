@@ -28,6 +28,8 @@ class BitcoinExchange {
 
 		void processUserDatabaseLine(const std::string &line);
 
+		bool validateInformation(const std::string &date, const std::string &price) const;
+
 		void calculatePrice(const std::string &date, const double amount);
 };
 
