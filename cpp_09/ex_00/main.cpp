@@ -6,8 +6,8 @@ int main(const int argc, const char * const argv[]) {
 		utils::exitWithError("Invalid arguments amount");
 	}
 
-	BitcoinExchange &btc = BitcoinExchange::getBitcoinExchange();
-	btc.processInput(std::string(argv[1]));
+	BitcoinExchange btc = BitcoinExchange();
+	btc.processInput(argv[1]);
 
 	return 0;
 }

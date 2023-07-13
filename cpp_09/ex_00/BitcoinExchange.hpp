@@ -7,14 +7,6 @@
 class BitcoinExchange {
 	public:
 
-		static BitcoinExchange &getBitcoinExchange();
-
-		void processInput(const std::string &filename);
-
-	private:
-
-		typedef std::map<std::string, double> Database;
-
 		BitcoinExchange();
 
 		~BitcoinExchange();
@@ -22,6 +14,12 @@ class BitcoinExchange {
 		BitcoinExchange(const BitcoinExchange &other);
 
 		BitcoinExchange &operator =(const BitcoinExchange &other);
+
+		void processInput(const std::string &filename);
+
+	private:
+
+		typedef std::map<std::string, double> Database;
 
 		Database dataBase_;
 

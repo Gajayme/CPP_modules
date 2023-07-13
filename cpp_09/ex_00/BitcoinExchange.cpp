@@ -13,7 +13,6 @@ namespace {
 } // namespace
 
 BitcoinExchange::BitcoinExchange() {
-	std::cout << " constructor called" << std::endl;
 	readDatabase();
 }
 
@@ -28,19 +27,19 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other) {
 	return *this;
 }
 
-
-BitcoinExchange &BitcoinExchange::getBitcoinExchange(){
-	static BitcoinExchange bitcoinExchange;
-	return bitcoinExchange;
-}
-
 BitcoinExchange::~BitcoinExchange() {
 }
 
 void BitcoinExchange::processInput(const std::string &filename) {
+
+	if (dataBase_.empty()) {
+		utils::printParseError("Empty Database");
+		return;
+	}
+
 	std::ifstream inf(filename);
 	if (!inf) {
-		utils::exitWithError("Can't open db file");
+		utils::exitWithError("Can't open user database");
 	}
 	std::string line;
 	std::getline(inf, line);
@@ -53,7 +52,7 @@ void BitcoinExchange::processInput(const std::string &filename) {
 void BitcoinExchange::readDatabase() {
 	std::ifstream inf(databasePath);
 	if (!inf) {
-		utils::exitWithError("Can't open database: " + databasePath);
+		utils::exitWithError("Can't open task database: " + databasePath);
 	}
 
 	std::string line;
@@ -71,7 +70,7 @@ void BitcoinExchange::processTaskDatabaseLine(const std::string &line) {
 
 	const size_t delimeterIdx = line.find(tastDatabaseDelimeter);
 	const std::string datePart = utils::trim(line.substr(0, delimeterIdx));
-	const std::string pricePart = line.substr(delimeterIdx + 1, line.length());
+	const std::string pricePart = utils::trim(line.substr(delimeterIdx + 1, line.length()));
 
 	if (!validateInformation(datePart, pricePart)) {
 		utils::exitWithError("Error in DB");
@@ -93,6 +92,7 @@ void BitcoinExchange::processUserDatabaseLine(const std::string &line) const{
 	if (!validateInformation (datePart, pricePart)) {
 		return;
 	}
+
 	const double amount = std::stod(pricePart);
 
 	if (!utils::checkLowerBorder(amount)){
@@ -123,6 +123,13 @@ bool BitcoinExchange::validateInformation(const std::string &date, const std::st
 
 void BitcoinExchange::calculatePrice(const std::string &date, const double amount) const {
 	Database::const_iterator it = dataBase_.lower_bound(date);
+
+	if (it == dataBase_.end()) {
+		--it;
+		const double price = amount * (it->second);
+		utils::printPrice(date, amount, price);
+		return;
+	}
 
 	while (true) {
 		if ((it->first) <= date) {
