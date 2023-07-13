@@ -21,10 +21,10 @@ class RPN {
 
 	void calculateRPN(const std::string &rpnString);
 
+
 	private:
 
-	const std::string allChars_;
-	const std::string operators_;
+	bool checkSymbols(const std::string &rpnString) const;
 
 };
 
