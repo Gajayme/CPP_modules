@@ -12,7 +12,7 @@ const std::string digits = "1234567890";
 const std::string operators = "+-*/";
 const std::string allChars = digits + operators + " " ;
 
-int calculateOperation(int a, int b, char operation) {
+long calculateOperation(long a, long b, char operation) {
 	if (operation == '+') {
 		return (a + b);
 	} else if (operation == '-') {
@@ -45,21 +45,27 @@ RPN &RPN::operator=(const RPN &other) {
 RPN::~RPN() {
 }
 
-void RPN::calculateRPN(const std::string &rpnString) {
+void RPN::calculateRpn(const std::string &rpnString) {
 
 	if (!checkSymbols(rpnString)) {
 		utils::printError();
 		return;
 	}
+	processRpnString(rpnString);
+}
 
-	std::stack<int> operandsStack;
+void RPN::processRpnString(const std::string &rpnString) const {
+
+	std::stack<long> operandsStack;
 	std::string operandString;
 
 	for (size_t i = 0; i != rpnString.size(); ++i) {
-		if (checkChar(rpnString[i], operators)) {
+		const bool isOperator = checkChar(rpnString[i], operators);
+		const bool isSpace = rpnString[i] == ' ';
 
+		if (isOperator) {
 			if (!operandString.empty()) {
-				operandsStack.push(std::stoi(operandString));
+				operandsStack.push(std::stol(operandString));
 				operandString.clear();
 			}
 
@@ -68,17 +74,16 @@ void RPN::calculateRPN(const std::string &rpnString) {
 				return;
 			}
 
-
-			const int a = operandsStack.top();
+			const long a = operandsStack.top();
 			operandsStack.pop();
-			const int b = operandsStack.top();
+			const long b = operandsStack.top();
 			operandsStack.pop();
 			operandsStack.push(calculateOperation(b, a, rpnString[i]));
 
-		} else if ((rpnString[i] == ' ')  && !operandString.empty()) {
+		} else if (isSpace && !operandString.empty()) {
 			operandsStack.push(std::stoi(operandString));
 			operandString.clear();
-		} else if (rpnString[i] != ' ') {
+		} else if (!isSpace) {
 			operandString += rpnString[i];
 		}
 	}
@@ -98,3 +103,4 @@ bool RPN::checkSymbols(const std::string &rpnString) const {
 	}
 	return true;
 }
+

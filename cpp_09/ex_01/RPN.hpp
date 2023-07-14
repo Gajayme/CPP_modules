@@ -7,22 +7,19 @@ class RPN {
 
 	public :
 
-	//constructor
 	RPN();
 
-	//copy constructor
 	RPN(const RPN &other);
 
-	//assignment operator
 	RPN &operator =(const RPN &other);
 
-	//destructor
 	~RPN();
 
-	void calculateRPN(const std::string &rpnString);
-
+	void calculateRpn(const std::string &rpnString);
 
 	private:
+
+	void processRpnString(const std::string &rpnString) const;
 
 	bool checkSymbols(const std::string &rpnString) const;
 
