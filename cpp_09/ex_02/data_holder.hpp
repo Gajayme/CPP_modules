@@ -1,5 +1,5 @@
-#ifndef DATAHOLDER_HPP
-# define DATAHOLDER_HPP
+#ifndef DATA_HOLDER_HPP
+# define DATA_HOLDER_HPP
 
 #include <iostream>
 #include <vector>
@@ -13,8 +13,8 @@ public:
 
 	static DataHolder &getDataHolder();
 	bool readData(const size_t len, const char * const data[]);
-	const Vector &getVecData() const;
-	const Deque &getDeqData() const;
+	Vector &getVecData();
+	Deque &getDeqData();
 
 private:
 

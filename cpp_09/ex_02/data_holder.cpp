@@ -1,5 +1,6 @@
-#include "dataHolder.hpp"
+#include "data_holder.hpp"
 #include "utils.hpp"
+
 #include <string>
 
 DataHolder::DataHolder():
@@ -48,10 +49,10 @@ bool DataHolder::readData(const size_t len, const char * const data[]) {
 	return true;
 }
 
-const DataHolder::Vector &DataHolder::getVecData() const {
+DataHolder::Vector &DataHolder::getVecData() {
 	return vecData_;
 }
 
-const DataHolder::Deque &DataHolder::getDeqData() const {
+ DataHolder::Deque &DataHolder::getDeqData() {
 	return deqData_;
 }

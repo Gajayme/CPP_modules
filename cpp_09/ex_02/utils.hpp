@@ -13,10 +13,16 @@ void exitWithError(const std::string &errorMsg);
 bool isValidString(const std::string &str);
 
 template <typename T>
+T myAdvance(T iterator, const size_t steps) {
+	advance(iterator, steps);
+	return iterator;
+}
+
+template <typename T>
 void printData(const T &data) {
 	std::cout << "-----" << std::endl;
-	for (size_t i = 0; i < data.size(); ++i) {
-		std::cout << data[i] << " ";
+	for (typename T::const_iterator it = data.cbegin(); it != data.cend(); ++it) {
+		std::cout << *it << " ";
  	}
 	std::cout << std::endl;
 	std::cout << "-----" << std::endl;

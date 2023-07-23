@@ -14,4 +14,6 @@ bool isValidString(const std::string &str) {
 	return str.find_first_not_of(avalibleData) == std::string::npos;
 }
 
+
+
 } //namespace utils
