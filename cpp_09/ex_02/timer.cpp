@@ -1,10 +1,5 @@
 #include "timer.hpp"
 
-namespace {
-	//double denumenator = 1000.0;
-}
-
-
 Timer::Timer():
 start_(){
 }

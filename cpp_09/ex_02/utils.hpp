@@ -17,13 +17,12 @@ T myAdvance(T iterator, const size_t steps) {
 }
 
 template <typename T>
-void printData(const T &data) {
-	std::cout << "-----" << std::endl;
+void printData(const T &data, const std::string &prefix) {
+	std::cout << prefix << ": ";
 	for (typename T::const_iterator it = data.cbegin(); it != data.cend(); ++it) {
 		std::cout << *it << " ";
  	}
 	std::cout << std::endl;
-	std::cout << "-----" << std::endl;
 }
 
 } // namespace  utils

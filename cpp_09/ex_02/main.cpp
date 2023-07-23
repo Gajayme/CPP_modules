@@ -1,6 +1,6 @@
 #include "utils.hpp"
 #include "data_holder.hpp"
-#include "merge_sort.hpp"
+#include "p_merge_me.hpp"
 #include "timer.hpp"
 
 #include <iostream>
@@ -17,16 +17,10 @@ int main(const int argc, const char * const argv[]) {
 		utils::exitWithError("invalid data");
 	}
 
-	Timer timer;
-	timer.start();
+	PmergeMe pmergeme;
 
-	//utils::printData(dataHolder.getVecData());
-	//utils::printData(dataHolder.getDeqData());
-	//myMergeSort(dataHolder.getDeqData(), 0, dataHolder.getDeqData().size() -1);
-	//utils::printData(dataHolder.getVecData());
-	//utils::printData(dataHolder.getDeqData());
-
-	std::cout << timer.getTime() << std::endl;
+	pmergeme.sort(dataHolder.getVecData());
+	pmergeme.sort(dataHolder.getDeqData());
 
 	return 0;
 }
