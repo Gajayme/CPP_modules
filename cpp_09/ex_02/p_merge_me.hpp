@@ -3,6 +3,7 @@
 
 #include "timer.hpp"
 #include "utils.hpp"
+#include "data_holder.hpp"
 
 #include <iostream>
 
@@ -13,8 +14,7 @@ public:
 	PmergeMe &operator =(const PmergeMe &other);
 	~PmergeMe();
 
-	template <typename T>
-	void sort(T &container);
+	void processData(DataHolder &dataHolder);
 
 private:
 
@@ -27,16 +27,6 @@ private:
 	void myMergeSort(T &container, size_t left, size_t right);
 
 };
-
-template <typename T>
-void PmergeMe::sort(T &container) {
-	utils::printData(container, "Before");
-	timer_.start();
-	myMergeSort(container, 0, container.size() - 1);
-	double timePassed = timer_.getTime();
-	utils::printData(container, "After");
-	std::cout << "Time to process a range of " << container.size() << " elements = " << timePassed << std::endl;
-}
 
 template <typename T>
 void PmergeMe::myMerge(T &container, int left, int mid, int right) {

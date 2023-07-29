@@ -39,6 +39,7 @@ bool DataHolder::readData(const size_t len, const char * const data[]) {
 		}
 		const size_t num = std::stoi(str);
 		if (std::find(tmpVec.begin(), tmpVec.end(), num) != tmpVec.end()) {
+			std::cout << "duplicates" << std::endl;
 			return false;
 		}
 		tmpVec.push_back(num);
