@@ -2,24 +2,19 @@
 # define DATA_HOLDER_HPP
 
 #include <iostream>
-#include <vector>
-#include <deque>
 
 class DataHolder {
 public:
 
-	typedef std::vector<size_t> Vector;
-	typedef std::deque<size_t> Deque;
-
 	static DataHolder &getDataHolder();
 	bool readData(const size_t len, const char * const data[]);
-	Vector &getVecData();
-	Deque &getDeqData();
+	const size_t *getData() const;
+	size_t getSize() const ;
 
 private:
 
-	Vector vecData_;
-	Deque deqData_;
+	size_t *data_;
+	size_t size_;
 
 	DataHolder();
 	~DataHolder();

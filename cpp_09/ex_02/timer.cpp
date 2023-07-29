@@ -24,7 +24,7 @@ void Timer::start() {
 	start_ = std::chrono::high_resolution_clock::now();
 }
 
-double Timer::getTime() {
+double Timer::getTime() const {
 	const TimePoint now = std::chrono::high_resolution_clock::now();
 	const Microseconds result = std::chrono::duration_cast<std::chrono::microseconds>(now - start_);
 	return (static_cast<double>(result.count()));

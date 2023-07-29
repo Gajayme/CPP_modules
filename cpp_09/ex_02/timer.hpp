@@ -18,7 +18,7 @@ public:
 	~Timer();
 
 	void start();
-	double getTime();
+	double getTime() const;
 
 private:
 	TimePoint start_;

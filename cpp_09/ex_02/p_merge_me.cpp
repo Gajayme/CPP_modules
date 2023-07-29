@@ -1,5 +1,8 @@
 #include "p_merge_me.hpp"
 
+#include <vector>
+#include <deque>
+
 namespace {
 
 	void logResults(const size_t amount, const std::string &containerType, const size_t &time) {
@@ -28,16 +31,19 @@ PmergeMe::~PmergeMe() {
 }
 
 void PmergeMe::processData(DataHolder &dataHolder) {
-	size_t timeToSort = 0;
-	utils::printData(dataHolder.getVecData(), "before");
+
+	const size_t size = dataHolder.getSize();
+
+	std::vector<size_t> vectorData(dataHolder.getData(), dataHolder.getData() + size);
+	std::deque<size_t> dequeData(dataHolder.getData(), dataHolder.getData() + size);
+
+	utils::printData(vectorData, "before");
 	timer_.start();
-	myMergeSort(dataHolder.getVecData(), 0, dataHolder.getVecData().size() - 1);
-	timeToSort = timer_.getTime();
-	utils::printData(dataHolder.getVecData(), "after");
-	logResults(dataHolder.getVecData().size(), "vector", timeToSort);
+	myMergeSort(vectorData, 0, size - 1);
+	utils::printData(vectorData, "after");
+	logResults(size, "vector", timer_.getTime());
 
 	timer_.start();
-	myMergeSort(dataHolder.getDeqData(), 0, dataHolder.getDeqData().size() - 1);
-	timeToSort = timer_.getTime();
-	logResults(dataHolder.getVecData().size(), "deque", timeToSort);
+	myMergeSort(dequeData, 0, size - 1);
+	logResults(size, "deque", timer_.getTime());
 }

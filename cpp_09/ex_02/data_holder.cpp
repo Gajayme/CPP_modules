@@ -4,11 +4,14 @@
 #include <string>
 
 DataHolder::DataHolder():
-vecData_(),
-deqData_() {
+data_(NULL),
+size_(0) {
 }
 
 DataHolder::~DataHolder() {
+	if (data_ != NULL) {
+		delete[] data_;
+	}
 }
 
 DataHolder::DataHolder(const DataHolder &){
@@ -28,9 +31,7 @@ bool DataHolder::readData(const size_t len, const char * const data[]) {
 	if (len < 2) {
 		return false;
 	}
-
-	Vector tmpVec;
-	Deque tmpDeq;
+	size_t *tmpData = new size_t[len];
 
 	for (size_t i = 1; i < len; ++i) {
 		const std::string str(data[i]);
@@ -38,22 +39,24 @@ bool DataHolder::readData(const size_t len, const char * const data[]) {
 			return false;
 		}
 		const size_t num = std::stoi(str);
-		if (std::find(tmpVec.begin(), tmpVec.end(), num) != tmpVec.end()) {
-			std::cout << "duplicates" << std::endl;
+		if (std::find(tmpData, tmpData + (i - 1), num) != (tmpData + i - 1)) {
+			delete[] tmpData;
 			return false;
 		}
-		tmpVec.push_back(num);
-		tmpDeq.push_back(num);
+		tmpData[i - 1] = num;
 	}
-	vecData_ = tmpVec;
-	deqData_ = tmpDeq;
+	if (data_ != NULL) {
+		delete[] data_;
+	}
+	data_ = tmpData;
+	size_ = len - 1;
 	return true;
 }
 
-DataHolder::Vector &DataHolder::getVecData() {
-	return vecData_;
+const size_t *DataHolder::getData() const {
+	return data_;
 }
 
- DataHolder::Deque &DataHolder::getDeqData() {
-	return deqData_;
+size_t DataHolder::getSize() const {
+	return size_;
 }
