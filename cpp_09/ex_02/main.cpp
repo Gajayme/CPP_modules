@@ -6,6 +6,7 @@
 #include <iostream>
 
 int main(const int argc, const char * const argv[]) {
+
 	DataHolder &dataHolder = DataHolder::getDataHolder();
 	if (!dataHolder.readData(argc,argv)) {
 		utils::exitWithError("invalid data");

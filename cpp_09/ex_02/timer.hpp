@@ -19,6 +19,7 @@ public:
 
 	void start();
 	double getTime() const;
+	bool checkTimer();
 
 private:
 	TimePoint start_;

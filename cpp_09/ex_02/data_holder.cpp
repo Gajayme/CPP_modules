@@ -36,10 +36,12 @@ bool DataHolder::readData(const size_t len, const char * const data[]) {
 	for (size_t i = 1; i < len; ++i) {
 		const std::string str(data[i]);
 		if (!utils::isValidString(str)) {
+			delete[] tmpData;
 			return false;
 		}
 		const size_t num = std::stoi(str);
-		if (std::find(tmpData, tmpData + (i - 1), num) != (tmpData + i - 1)) {
+		size_t *dataEnd = tmpData + (i - 1);
+		if (std::find(tmpData, dataEnd, num) != dataEnd) {
 			delete[] tmpData;
 			return false;
 		}

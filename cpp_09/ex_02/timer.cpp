@@ -1,5 +1,7 @@
 #include "timer.hpp"
 
+#include <unistd.h>
+
 Timer::Timer():
 start_(){
 }
@@ -28,4 +30,13 @@ double Timer::getTime() const {
 	const TimePoint now = std::chrono::high_resolution_clock::now();
 	const Microseconds result = std::chrono::duration_cast<std::chrono::microseconds>(now - start_);
 	return (static_cast<double>(result.count()));
+}
+
+bool Timer::checkTimer() {
+	start();
+	sleep(1);
+	const double res = getTime();
+	const double expectedResult = 1000000;
+	const double epsilon = expectedResult * 0.1;
+	return (std::abs(res - expectedResult) < epsilon);
 }

@@ -40,8 +40,9 @@ void PmergeMe::processData(DataHolder &dataHolder) {
 	utils::printData(vectorData, "before");
 	timer_.start();
 	myMergeSort(vectorData, 0, size - 1);
+	const double timeToSortVec = timer_.getTime();
 	utils::printData(vectorData, "after");
-	logResults(size, "vector", timer_.getTime());
+	logResults(size, "vector", timeToSortVec);
 
 	timer_.start();
 	myMergeSort(dequeData, 0, size - 1);
